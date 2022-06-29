@@ -1,0 +1,41 @@
+﻿@model Capa_de_Modelo.Producto
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+        Productos existentes
+    </div>
+
+
+    <div class="row">
+        <table class="table table-bordered">
+            <thead>
+            <th>IdProducto</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Descripcion</th>
+            <th>Stock</th>
+            <th>Imagen</th>
+            </thead>
+
+            <tbody>
+                @foreach (Capa_de_Modelo.Producto producto in Model.Productos)
+                {
+                <tr>
+                    <td>@producto.IdProducto</td>
+                    <td>@producto.Nombre</td>
+                    <td>@producto.Precio</td>
+                    <td>@producto.Descripcion</td>
+                    <td>@producto.Stock</td>
+                    <td>@producto.Imagen</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

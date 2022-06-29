@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa de Modelo", "Capa de M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa de Negocio", "Capa de Negocio\Capa de Negocio.csproj", "{EEE51699-120E-4B2C-B343-FC8881510449}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa de Presentacion", "Capa de Presentacion\Capa de Presentacion.csproj", "{5954B583-7FD8-4068-94BF-9AFE19F481FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{EEE51699-120E-4B2C-B343-FC8881510449}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEE51699-120E-4B2C-B343-FC8881510449}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEE51699-120E-4B2C-B343-FC8881510449}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5954B583-7FD8-4068-94BF-9AFE19F481FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5954B583-7FD8-4068-94BF-9AFE19F481FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5954B583-7FD8-4068-94BF-9AFE19F481FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5954B583-7FD8-4068-94BF-9AFE19F481FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
