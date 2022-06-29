@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0d5e3891fe4f496ab16a7695d1941356" Name="Diagram1">
+        <EntityTypeShape EntityType="PruebaBriveModel.Producto" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PruebaBriveModel.ProductoSucursal" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PruebaBriveModel.Sucursal" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PruebaBriveModel.Venta" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <AssociationConnector Association="PruebaBriveModel.FK__ProductoS__IdPro__1ED998B2" ManuallyRouted="false" />
+        <AssociationConnector Association="PruebaBriveModel.FK__Venta__IdProduct__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="PruebaBriveModel.FK__ProductoS__IdSuc__1FCDBCEB" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

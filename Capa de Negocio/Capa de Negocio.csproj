@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8A9B8A62-87D0-4776-AC68-885014923442}</ProjectGuid>
+    <ProjectGuid>{EEE51699-120E-4B2C-B343-FC8881510449}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Capa_de_Datos</RootNamespace>
-    <AssemblyName>Capa de Datos</AssemblyName>
+    <RootNamespace>Capa_de_Negocio</RootNamespace>
+    <AssemblyName>Capa de Negocio</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -43,8 +43,6 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,73 +51,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Producto.cs">
-      <DependentUpon>PruebaBriveModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProductoGetAll_Result.cs">
-      <DependentUpon>PruebaBriveModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProductoGetById_Result.cs">
-      <DependentUpon>PruebaBriveModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProductoSucursal.cs">
-      <DependentUpon>PruebaBriveModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Producto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PruebaBriveModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PruebaBriveModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PruebaBriveModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PruebaBriveModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PruebaBriveModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PruebaBriveModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Sucursal.cs">
-      <DependentUpon>PruebaBriveModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SucursalGetAll_Result.cs">
-      <DependentUpon>PruebaBriveModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SucursalGetById_Result.cs">
-      <DependentUpon>PruebaBriveModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Venta.cs">
-      <DependentUpon>PruebaBriveModel.tt</DependentUpon>
-    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Capa de Datos\Capa de Datos.csproj">
+      <Project>{8a9b8a62-87d0-4776-ac68-885014923442}</Project>
+      <Name>Capa de Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Capa de Modelo\Capa de Modelo.csproj">
+      <Project>{44744dda-e077-43c5-b6cd-1f14d66bc9f7}</Project>
+      <Name>Capa de Modelo</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <EntityDeploy Include="PruebaBriveModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PruebaBriveModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="PruebaBriveModel.edmx.diagram">
-      <DependentUpon>PruebaBriveModel.edmx</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="PruebaBriveModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PruebaBriveModel.edmx</DependentUpon>
-      <LastGenOutput>PruebaBriveModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="PruebaBriveModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PruebaBriveModel.edmx</DependentUpon>
-      <LastGenOutput>PruebaBriveModel.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
