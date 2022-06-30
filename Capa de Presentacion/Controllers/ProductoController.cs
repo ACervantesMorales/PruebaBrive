@@ -50,8 +50,16 @@ namespace Capa_de_Presentacion.Controllers
         public ActionResult Form(Capa_de_Modelo.Producto producto)
         {
             Capa_de_Modelo.Auxiliar auxiliar = new Capa_de_Modelo.Auxiliar();
+            
+            IFormFile file = Request.Form.Files["ImageUser"];
 
-            if(producto.IdProducto == 0)
+            if (file != null)
+            {
+                byte[] ImagenBytes = ConvertToBytes(file);
+                producto.Imagen = Convert.ToBase64String(ImagenBytes);
+            }
+
+            if (producto.IdProducto == 0)
             {
                 auxiliar = Capa_de_Negocio.Producto.Add(producto);
 
@@ -74,7 +82,7 @@ namespace Capa_de_Presentacion.Controllers
                 }
                 else
                 {
-                    ViewBag.Mensaje = "Ha ocurrido un problema al intentar actualizar el producto: " + auxiliar.ErrorMessage; 
+                    ViewBag.Mensaje = "Ha ocurrido un problema al intentar actualizar el producto: " + auxiliar.ErrorMessage;
                 }
             }
 
@@ -97,5 +105,16 @@ namespace Capa_de_Presentacion.Controllers
 
             return PartialView("Modal");
         }
-     
+
+
+        public static byte[] ConvertToBytes(IFormFile imagen)
+        {
+            using var fileStream = imagen.OpenReadStream();
+
+            byte[] bytes = new byte[fileStream.Length];
+            fileStream.Read(bytes, 0, (int)fileStream.Length);
+
+            return bytes;
+        }
+    }
 }
