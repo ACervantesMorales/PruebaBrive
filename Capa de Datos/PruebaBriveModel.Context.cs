@@ -174,5 +174,14 @@ namespace Capa_de_Datos
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SucursalUpdate", idSucursalParameter, nombreParameter, ubicacionParameter);
         }
+    
+        public virtual ObjectResult<ProductoGetBySucursal_Result> ProductoGetBySucursal(Nullable<int> idSucursal)
+        {
+            var idSucursalParameter = idSucursal.HasValue ?
+                new ObjectParameter("IdSucursal", idSucursal) :
+                new ObjectParameter("IdSucursal", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductoGetBySucursal_Result>("ProductoGetBySucursal", idSucursalParameter);
+        }
     }
 }

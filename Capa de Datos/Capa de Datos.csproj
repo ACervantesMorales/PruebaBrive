@@ -64,6 +64,9 @@
     <Compile Include="ProductoGetById_Result.cs">
       <DependentUpon>PruebaBriveModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ProductoGetBySucursal_Result.cs">
+      <DependentUpon>PruebaBriveModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ProductoSucursal.cs">
       <DependentUpon>PruebaBriveModel.tt</DependentUpon>
     </Compile>

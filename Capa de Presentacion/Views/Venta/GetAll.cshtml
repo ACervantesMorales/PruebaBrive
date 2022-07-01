@@ -21,8 +21,8 @@
                     <div class="row grid">
                         @foreach (Capa_de_Modelo.Producto producto in Model.Productos)
                         {
-                            <div class="col-lg-4 col-md-4 all des">
-                                <div class="product-item" style="height:360px;">
+                            <div class="col-lg-4 col-md-4 all des" style="height:370px;">
+                                <div class="product-item">
                                     @if (producto.Imagen != null)
                                     {
                                         <td><img src="data:image/jpeg;base64,@Convert.ToBase64String(producto.Imagen)" style=" height:150px; width: 150px;" /></td>
@@ -31,7 +31,6 @@
                                     {
                                         <td><img src="~/Content/sinimagen.jpg" style=" height:150px; width:150px;" /></td>
                                     }
-                                    @*<img src="assets/images/product_01.jpg" alt="">*@
                                     <div class="down-content">
                                         <a href="#"><h4>@producto.Nombre</h4></a>
                                         <h6>$@producto.Precio</h6>
