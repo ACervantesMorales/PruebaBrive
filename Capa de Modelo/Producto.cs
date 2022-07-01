@@ -13,7 +13,7 @@ namespace Capa_de_Modelo
         public decimal Precio { get; set; }
         public string Descripcion { get; set; }
         public int Stock { get; set; }
-        public string Imagen { get; set; }
+        public byte[] Imagen { get; set; }
         public List<object> Productos { get; set; }
     }
 }

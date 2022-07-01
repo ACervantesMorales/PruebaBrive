@@ -17,78 +17,120 @@
         <div class="col-md-12">
             @using (Html.BeginForm("Form", "Producto", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
-            <div class="form-horizontal">
+                <div class="form-horizontal">
 
-                <div class="form-group">
-                    <div class="col-md-3">
-                        @Html.TextBoxFor(model => model.IdProducto, new { @class = "hidden form-control", autocomplete = "off" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-3">
-                        @Html.LabelFor(model => model.Nombre)
-                        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", @id = "txtNombre" })
-                        @Html.ValidationMessageFor(model => model.Nombre)
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-3">
-                        @Html.LabelFor(model => model.Precio)
-                        @Html.TextBoxFor(model => model.Precio, new { @class = "form-control", @id = "txtNombre" })
-                        @Html.ValidationMessageFor(model => model.Precio)
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-3">
-                        @Html.LabelFor(model => model.Descripcion)
-                        @Html.TextBoxFor(model => model.Descripcion, new { @class = "form-control", @id = "txtNombre" })
-                        @Html.ValidationMessageFor(model => model.Descripcion)
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-3">
-                        @Html.LabelFor(model => model.Stock)
-                        @Html.TextBoxFor(model => model.Stock, new { @class = "form-control", @id = "txtNombre" })
-                        @Html.ValidationMessageFor(model => model.Stock)
-                    </div>
-                </div>
-
-
-                <div class="col-md-4">
-                    @Html.LabelFor(model => model.Imagen)
-
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1"><i class="bi bi-card-image"></i></span>
-                        <input type='file' id="inputFile" class="form-control" name="ImageUser" onchange="validarFile(this), validarSize(this), readURL(this);" />
-                        @Html.ValidationMessageFor(model => model.Imagen, null, new { @class = "text-danger" })
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(model => model.IdProducto, new { @class = "hidden form-control", autocomplete = "off" })
+                        </div>
                     </div>
 
-                    @if (Model.Imagen != null & Model.Imagen != "")
-                    {
-                        <img id="Img" src="data:image/*;base64,@Model.Imagen" style="width:auto ; height:100px" />
-                    }
-                    else
-                    {
-                        <img id="Img" src="~/Images/sinimagen.jpg" style="width:auto ; height:100px" />
-                    }
-                </div>
-                @Html.HiddenFor(model => model.Imagen)
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.Nombre)
+                            @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", @id = "txtNombre" })
+                            @Html.ValidationMessageFor(model => model.Nombre)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.Precio)
+                            @Html.TextBoxFor(model => model.Precio, new { @class = "form-control", @id = "txtNombre" })
+                            @Html.ValidationMessageFor(model => model.Precio)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.Descripcion)
+                            @Html.TextBoxFor(model => model.Descripcion, new { @class = "form-control", @id = "txtNombre" })
+                            @Html.ValidationMessageFor(model => model.Descripcion)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.Stock)
+                            @Html.TextBoxFor(model => model.Stock, new { @class = "form-control", @id = "txtNombre" })
+                            @Html.ValidationMessageFor(model => model.Stock)
+                        </div>
+                    </div>
 
 
-                <div class="form-group">
-                    <div class="col-md-3">
-                        <input type="submit" value="Guardar" class="btn btn-success" />
-                        @Html.ActionLink("Regresar", "GetAll", "Producto", htmlAttributes: new { @class = "btn btn-danger" })
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.Imagen)
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-card-image"></i></span>
+                            <input type='file' id="inputFile" class="form-control" name="ImageProducto" onchange="validarFile(this), validarSize(this), readURL(this);" />
+                            @Html.ValidationMessageFor(model => model.Imagen, null, new { @class = "text-danger" })
+                        </div>
+
+                        @if (Model.Imagen != null)
+                        {
+                            <img id="Img" src="data:image/*;base64,@Model.Imagen" style="width:auto ; height:100px" />
+                        }
+                        else
+                        {
+                            <img id="Img" src="~/Content/sinimagen.jpg" style="width:auto ; height:100px" />
+                        }
+                    </div>
+                    @Html.HiddenFor(model => model.Imagen)
+
+
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <input type="submit" value="Guardar" class="btn btn-success" />
+                            @Html.ActionLink("Regresar", "GetAll", "Producto", htmlAttributes: new { @class = "btn btn-danger" })
+                        </div>
                     </div>
                 </div>
-            </div>
 
             }
         </div>
     </div>
 </div>
+
+
+@section Scripts
+{
+    <script src="~/Scripts/vendor/jquery/jquery.js"></script>
+    <script type="text/javascript">
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#Img')
+                        .attr('src', e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function validarFile(input) {
+            let extensiones = ["jpg", "jpeg"];
+            var nombreFile = input.files[0].name;
+            var extension = nombreFile.split(".").slice(-1);
+            extension = extension[0];
+
+            if (extensiones.indexOf(extension) === -1) {
+                alert("Extensión NO permitida");
+                document.getElementById("inputFile").value = "";
+            } else {
+                alert("Extensión permitida");
+            }
+        }
+
+        function validarSize(input) {
+            var sizeKb = input.files[0].size;
+            var tamanioMb = sizeKb / 1024;
+
+            if (tamanioMb > 512) {
+                alert("Archivo demasiado grande");
+                document.getElementById("inputFile").value = "";
+            }
+        }
+    </script>
+    }
 

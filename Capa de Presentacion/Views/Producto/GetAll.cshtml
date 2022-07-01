@@ -44,20 +44,20 @@
                     @foreach (Capa_de_Modelo.Producto producto in Model.Productos)
                     {
                         <tr>
-                            <td><a class="btn btn-warning" href="@Url.Action("Form", "Producto", new { IIdProducto = producto.IdProducto })"><i class="bi bi-pencil"></i></a></td>
+                            <td><a class="btn btn-warning" href="@Url.Action("Form", "Producto", new { IdProducto = producto.IdProducto })"><i class="bi bi-pencil"></i></a></td>
                             <td class="visually-hidden">@producto.IdProducto</td>
                             <td>@producto.Nombre </td>
                             <td>@producto.Precio</td>
                             <td>@producto.Descripcion</td>
                             <td>@producto.Stock </td>
-                            @if (producto.Imagen != null && producto.Imagen != "")
+                            @if (producto.Imagen != null)
                             {
                                 <td><img src="data:image/*;base64,@producto.Imagen" width="auto" height="50" /></td>
                             }
                             else
                             {
 
-                                <td><img src="~/Images/sinimagen.jpg" width="auto" height="50" id="Img" /></td>
+                                <td><img src="~/Content/sinimagen.jpg" width="auto" height="50" id="Img" /></td>
                             }
 
                             <td><a class="btn btn-danger" href="@Url.Action("Delete", "Producto", new { IdProducto= producto.IdProducto})" onclick="return confirm('Desea eliminar el producto?');"><i class="bi bi-trash"></i></a></td>
@@ -73,7 +73,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="alert alert-danger">
-                    No se encontraron empresas registradas.
+                    No se encontraron productos registrados.
                 </div>
             </div>
         </div>

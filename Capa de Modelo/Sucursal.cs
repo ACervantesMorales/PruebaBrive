@@ -11,5 +11,6 @@ namespace Capa_de_Modelo
         public int IdSucursal { get; set; }
         public string Nombre { get; set; }
         public string Ubicacion { get; set; }
+        public List<object> Sucursales { get; set; }
     }
 }

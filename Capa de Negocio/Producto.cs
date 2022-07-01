@@ -13,7 +13,7 @@ namespace Capa_de_Negocio
             Capa_de_Modelo.Auxiliar auxiliar = new Capa_de_Modelo.Auxiliar();
             try
             {
-                using (Capa_de_Datos.PruebaBriveEntities context = new Capa_de_Datos.PruebaBriveEntities()) 
+                using (Capa_de_Datos.PruebaBriveEntities1 context = new Capa_de_Datos.PruebaBriveEntities1()) 
                 {
                     var query = context.ProductoAdd(producto.Nombre, producto.Precio, producto.Descripcion, producto.Stock, producto.Imagen);
 
@@ -41,7 +41,7 @@ namespace Capa_de_Negocio
             Capa_de_Modelo.Auxiliar auxiliar = new Capa_de_Modelo.Auxiliar();
             try
             {
-                using (Capa_de_Datos.PruebaBriveEntities context = new Capa_de_Datos.PruebaBriveEntities())
+                using (Capa_de_Datos.PruebaBriveEntities1 context = new Capa_de_Datos.PruebaBriveEntities1())
                 {
                     var query = context.ProductoUpdate(producto.IdProducto, producto.Nombre, producto.Precio, producto.Stock, producto.Descripcion, producto.Imagen);
 
@@ -69,7 +69,7 @@ namespace Capa_de_Negocio
             Capa_de_Modelo.Auxiliar auxiliar = new Capa_de_Modelo.Auxiliar();
             try
             {
-                using (Capa_de_Datos.PruebaBriveEntities context = new Capa_de_Datos.PruebaBriveEntities())
+                using (Capa_de_Datos.PruebaBriveEntities1 context = new Capa_de_Datos.PruebaBriveEntities1())
                 {
                     var query = context.ProductoDelete(IdProducto);
 
@@ -97,7 +97,7 @@ namespace Capa_de_Negocio
             Capa_de_Modelo.Auxiliar auxiliar = new Capa_de_Modelo.Auxiliar();
             try
             {
-                using (Capa_de_Datos.PruebaBriveEntities context = new Capa_de_Datos.PruebaBriveEntities())
+                using (Capa_de_Datos.PruebaBriveEntities1 context = new Capa_de_Datos.PruebaBriveEntities1())
                 {
                     var query = context.ProductoGetAll().ToList();
 
@@ -138,7 +138,7 @@ namespace Capa_de_Negocio
             Capa_de_Modelo.Auxiliar auxiliar = new Capa_de_Modelo.Auxiliar();
             try
             {
-                using (Capa_de_Datos.PruebaBriveEntities context = new Capa_de_Datos.PruebaBriveEntities())
+                using (Capa_de_Datos.PruebaBriveEntities1 context = new Capa_de_Datos.PruebaBriveEntities1())
                 {
                     var query = context.ProductoGetById(IdProducto).FirstOrDefault();
 
@@ -149,6 +149,7 @@ namespace Capa_de_Negocio
                         producto.Nombre = query.Nombre;
                         producto.Precio = query.Precio;
                         producto.Descripcion = query.Descripcion;
+                        producto.Stock = query.Stock;
                         producto.Imagen = query.Imagen;
 
                         auxiliar.Object = producto;

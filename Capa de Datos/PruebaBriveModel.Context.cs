@@ -15,10 +15,10 @@ namespace Capa_de_Datos
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class PruebaBriveEntities : DbContext
+    public partial class PruebaBriveEntities1 : DbContext
     {
-        public PruebaBriveEntities()
-            : base("name=PruebaBriveEntities")
+        public PruebaBriveEntities1()
+            : base("name=PruebaBriveEntities1")
         {
         }
     
@@ -32,7 +32,7 @@ namespace Capa_de_Datos
         public virtual DbSet<Sucursal> Sucursals { get; set; }
         public virtual DbSet<Venta> Ventas { get; set; }
     
-        public virtual int ProductoAdd(string nombre, Nullable<decimal> precio, string descripcion, Nullable<int> stock, string imagen)
+        public virtual int ProductoAdd(string nombre, Nullable<decimal> precio, string descripcion, Nullable<int> stock, byte[] imagen)
         {
             var nombreParameter = nombre != null ?
                 new ObjectParameter("Nombre", nombre) :
@@ -52,7 +52,7 @@ namespace Capa_de_Datos
     
             var imagenParameter = imagen != null ?
                 new ObjectParameter("Imagen", imagen) :
-                new ObjectParameter("Imagen", typeof(string));
+                new ObjectParameter("Imagen", typeof(byte[]));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ProductoAdd", nombreParameter, precioParameter, descripcionParameter, stockParameter, imagenParameter);
         }
@@ -93,7 +93,7 @@ namespace Capa_de_Datos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductoGetById_Result>("ProductoGetById", idProductoParameter);
         }
     
-        public virtual int ProductoUpdate(Nullable<int> idProducto, string nombre, Nullable<decimal> precio, Nullable<int> stock, string descripcion, string imagen)
+        public virtual int ProductoUpdate(Nullable<int> idProducto, string nombre, Nullable<decimal> precio, Nullable<int> stock, string descripcion, byte[] imagen)
         {
             var idProductoParameter = idProducto.HasValue ?
                 new ObjectParameter("IdProducto", idProducto) :
@@ -117,7 +117,7 @@ namespace Capa_de_Datos
     
             var imagenParameter = imagen != null ?
                 new ObjectParameter("Imagen", imagen) :
-                new ObjectParameter("Imagen", typeof(string));
+                new ObjectParameter("Imagen", typeof(byte[]));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ProductoUpdate", idProductoParameter, nombreParameter, precioParameter, stockParameter, descripcionParameter, imagenParameter);
         }

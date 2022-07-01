@@ -8,16 +8,17 @@ namespace Capa_de_Presentacion.Controllers
 {
     public class ProductoController : Controller
     {
-
         [HttpGet]
         public ActionResult GetAll()
         {
-            Capa_de_Modelo.Auxiliar auxiliar = Capa_de_Negocio.Producto.GetAll();
+            ProductoService.ProductoServiceClient serviceUsuario = new ProductoService.ProductoServiceClient();
+            var auxiliar = serviceUsuario.GetAll();
+
             Capa_de_Modelo.Producto producto = new Capa_de_Modelo.Producto();
 
             if (auxiliar.Correct)
             {
-                producto.Productos = auxiliar.Objects;
+                producto.Productos = auxiliar.Objects.ToList();
             }
 
             return View(producto);
@@ -26,16 +27,16 @@ namespace Capa_de_Presentacion.Controllers
         [HttpGet]
         public ActionResult Form(int? IdProducto)
         {
-            Capa_de_Modelo.Auxiliar auxiliar = new Capa_de_Modelo.Auxiliar();
+            ProductoService.ProductoServiceClient serviceUsuario = new ProductoService.ProductoServiceClient();
             Capa_de_Modelo.Producto producto = new Capa_de_Modelo.Producto();
 
             if (IdProducto == null)
             {
-                return View();
+                return View(producto);
             }
             else
             {
-                auxiliar = Capa_de_Negocio.Producto.GetById(IdProducto.Value);
+                var auxiliar = serviceUsuario.GetById(IdProducto.Value);
 
                 if (auxiliar.Correct)
                 {
@@ -49,19 +50,18 @@ namespace Capa_de_Presentacion.Controllers
         [HttpPost]
         public ActionResult Form(Capa_de_Modelo.Producto producto)
         {
-            Capa_de_Modelo.Auxiliar auxiliar = new Capa_de_Modelo.Auxiliar();
-            
-            IFormFile file = Request.Form.Files["ImageUser"];
+            ProductoService.ProductoServiceClient serviceUsuario = new ProductoService.ProductoServiceClient();
 
-            if (file != null)
+            HttpPostedFileBase file = Request.Files["ImageProducto"];
+
+            if (file.ContentLength > 0)
             {
-                byte[] ImagenBytes = ConvertToBytes(file);
-                producto.Imagen = Convert.ToBase64String(ImagenBytes);
+                producto.Imagen = ConvertToBytes(file);
             }
 
             if (producto.IdProducto == 0)
             {
-                auxiliar = Capa_de_Negocio.Producto.Add(producto);
+                var auxiliar = serviceUsuario.Add(producto);
 
                 if (auxiliar.Correct)
                 {
@@ -74,7 +74,7 @@ namespace Capa_de_Presentacion.Controllers
             }
             else
             {
-                auxiliar = Capa_de_Negocio.Producto.Update(producto);
+                var auxiliar = serviceUsuario.Update(producto);
 
                 if (auxiliar.Correct)
                 {
@@ -92,7 +92,8 @@ namespace Capa_de_Presentacion.Controllers
         [HttpGet]
         public ActionResult Delete(int IdProducto)
         {
-            Capa_de_Modelo.Auxiliar auxiliar = Capa_de_Negocio.Producto.Delete(IdProducto);
+            ProductoService.ProductoServiceClient serviceUsuario = new ProductoService.ProductoServiceClient();
+            var auxiliar = Capa_de_Negocio.Producto.Delete(IdProducto);
 
             if (auxiliar.Correct)
             {
@@ -106,15 +107,13 @@ namespace Capa_de_Presentacion.Controllers
             return PartialView("Modal");
         }
 
-
-        public static byte[] ConvertToBytes(IFormFile imagen)
+        public byte[] ConvertToBytes(HttpPostedFileBase Imagen)
         {
-            using var fileStream = imagen.OpenReadStream();
+            byte[] data = null;
+            System.IO.BinaryReader reader = new System.IO.BinaryReader(Imagen.InputStream);
+            data = reader.ReadBytes((int)Imagen.ContentLength);
 
-            byte[] bytes = new byte[fileStream.Length];
-            fileStream.Read(bytes, 0, (int)fileStream.Length);
-
-            return bytes;
+            return data;
         }
     }
 }

@@ -26,7 +26,7 @@ namespace Capa_de_Datos
         public decimal Precio { get; set; }
         public string Descripcion { get; set; }
         public int Stock { get; set; }
-        public string Imagen { get; set; }
+        public byte[] Imagen { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductoSucursal> ProductoSucursals { get; set; }

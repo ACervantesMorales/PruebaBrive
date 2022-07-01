@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PruebaBriveModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PruebaBriveModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Producto">
           <Key>
             <PropertyRef Name="IdProducto" />
@@ -14,7 +14,7 @@
           <Property Name="Precio" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="100" />
           <Property Name="Stock" Type="int" Nullable="false" />
-          <Property Name="Imagen" Type="varchar(max)" />
+          <Property Name="Imagen" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="ProductoSucursal">
           <Key>
@@ -82,7 +82,7 @@
           <Parameter Name="Precio" Type="decimal" Mode="In" />
           <Parameter Name="Descripcion" Type="varchar" Mode="In" />
           <Parameter Name="Stock" Type="int" Mode="In" />
-          <Parameter Name="Imagen" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Imagen" Type="varbinary(max)" Mode="In" />
         </Function>
         <Function Name="ProductoAddBySucursal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdProducto" Type="int" Mode="In" />
@@ -101,7 +101,7 @@
           <Parameter Name="Precio" Type="decimal" Mode="In" />
           <Parameter Name="Stock" Type="int" Mode="In" />
           <Parameter Name="Descripcion" Type="varchar" Mode="In" />
-          <Parameter Name="Imagen" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Imagen" Type="varbinary(max)" Mode="In" />
         </Function>
         <Function Name="SucursalAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Nombre" Type="varchar" Mode="In" />
@@ -137,8 +137,7 @@
             <End Role="Venta" EntitySet="Venta" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PruebaBriveModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -151,7 +150,7 @@
           <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Stock" Type="Int32" Nullable="false" />
-          <Property Name="Imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="ProductoSucursals" Relationship="Self.FK__ProductoS__IdPro__1ED998B2" FromRole="Producto" ToRole="ProductoSucursal" />
           <NavigationProperty Name="Ventas" Relationship="Self.FK__Venta__IdProduct__22AA2996" FromRole="Producto" ToRole="Venta" />
         </EntityType>
@@ -220,7 +219,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PruebaBriveEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PruebaBriveEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Productoes" EntityType="Self.Producto" />
           <EntitySet Name="ProductoSucursals" EntityType="Self.ProductoSucursal" />
           <EntitySet Name="Sucursals" EntityType="Self.Sucursal" />
@@ -242,18 +241,18 @@
             <Parameter Name="Precio" Mode="In" Type="Decimal" />
             <Parameter Name="Descripcion" Mode="In" Type="String" />
             <Parameter Name="Stock" Mode="In" Type="Int32" />
-            <Parameter Name="Imagen" Mode="In" Type="String" />
+            <Parameter Name="Imagen" Mode="In" Type="Binary" />
           </FunctionImport>
           <FunctionImport Name="ProductoAddBySucursal">
             <Parameter Name="IdProducto" Mode="In" Type="Int32" />
             <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ProductoDelete">
-            <Parameter Name="IdProducto" Mode="In" Type="Int32" />
+          <Parameter Name="IdProducto" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ProductoGetAll" ReturnType="Collection(PruebaBriveModel.ProductoGetAll_Result)" />
           <FunctionImport Name="ProductoGetById" ReturnType="Collection(PruebaBriveModel.ProductoGetById_Result)">
-            <Parameter Name="IdProducto" Mode="In" Type="Int32" />
+          <Parameter Name="IdProducto" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ProductoUpdate">
             <Parameter Name="IdProducto" Mode="In" Type="Int32" />
@@ -261,18 +260,18 @@
             <Parameter Name="Precio" Mode="In" Type="Decimal" />
             <Parameter Name="Stock" Mode="In" Type="Int32" />
             <Parameter Name="Descripcion" Mode="In" Type="String" />
-            <Parameter Name="Imagen" Mode="In" Type="String" />
+            <Parameter Name="Imagen" Mode="In" Type="Binary" />
           </FunctionImport>
           <FunctionImport Name="SucursalAdd">
             <Parameter Name="Nombre" Mode="In" Type="String" />
             <Parameter Name="Ubicacion" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SucursalDelete">
-            <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
+          <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SucursalGetAll" ReturnType="Collection(PruebaBriveModel.SucursalGetAll_Result)" />
           <FunctionImport Name="SucursalGetById" ReturnType="Collection(PruebaBriveModel.SucursalGetById_Result)">
-            <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
+          <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SucursalUpdate">
             <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
@@ -286,7 +285,7 @@
           <Property Type="Decimal" Name="Precio" Nullable="false" Precision="18" Scale="2" />
           <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="100" />
           <Property Type="Int32" Name="Stock" Nullable="false" />
-          <Property Type="String" Name="Imagen" Nullable="true" />
+          <Property Type="Binary" Name="Imagen" Nullable="true" />
         </ComplexType>
         <ComplexType Name="ProductoGetById_Result">
           <Property Type="Int32" Name="IdProducto" Nullable="false" />
@@ -294,7 +293,7 @@
           <Property Type="Decimal" Name="Precio" Nullable="false" Precision="18" Scale="2" />
           <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="100" />
           <Property Type="Int32" Name="Stock" Nullable="false" />
-          <Property Type="String" Name="Imagen" Nullable="true" />
+          <Property Type="Binary" Name="Imagen" Nullable="true" />
         </ComplexType>
         <ComplexType Name="SucursalGetAll_Result">
           <Property Type="Int32" Name="IdSucursal" Nullable="false" />
@@ -311,7 +310,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="PruebaBriveModelStoreContainer" CdmEntityContainer="PruebaBriveEntities">
+        <EntityContainerMapping StorageEntityContainer="PruebaBriveModelStoreContainer" CdmEntityContainer="PruebaBriveEntities1">
           <EntitySetMapping Name="Productoes">
             <EntityTypeMapping TypeName="PruebaBriveModel.Producto">
               <MappingFragment StoreEntitySet="Producto">
