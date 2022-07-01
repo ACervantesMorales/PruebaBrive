@@ -22,7 +22,7 @@
                         @foreach (Capa_de_Modelo.Producto producto in Model.Productos)
                         {
                             <div class="col-lg-4 col-md-4 all des">
-                                <div class="product-item">
+                                <div class="product-item" style="height:360px;">
                                     @if (producto.Imagen != null)
                                     {
                                         <td><img src="data:image/jpeg;base64,@Convert.ToBase64String(producto.Imagen)" style=" height:150px; width: 150px;" /></td>
