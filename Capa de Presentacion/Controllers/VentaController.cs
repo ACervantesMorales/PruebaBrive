@@ -134,5 +134,47 @@ namespace Capa_de_Presentacion.Controllers
 
 			return View("Carrito", auxiliar);
 		}
+
+		public ActionResult ModalCompra()
+		{
+			ViewBag.Message = "Se ha realizado su compra con exito";
+			return PartialView("ValidationModal");
+		}
+
+		public ActionResult Sumar(int IdProducto)
+		{
+			Capa_de_Modelo.Auxiliar result = new Capa_de_Modelo.Auxiliar();
+
+			result.Objects = (List<Object>)Session["Carrito"];//unboxing de la lista
+
+			foreach (Capa_de_Modelo.Venta ventaProducto in result.Objects) //para comparar
+			{
+				if (ventaProducto.Producto.IdProducto == IdProducto)
+				{
+
+					ventaProducto.Cantidad += 1;//aumenta la cantida
+
+				}
+			}
+			return View("Carrito", result);
+		} // metodo que le agrega 1 a la cantidad del producto en la lista de venta 
+
+		public ActionResult Restar(int IdProducto)
+		{
+			Capa_de_Modelo.Auxiliar result = new Capa_de_Modelo.Auxiliar();
+
+			result.Objects = (List<Object>)Session["Carrito"];//unboxing de la lista
+
+			foreach (Capa_de_Modelo.Venta ventaProducto in result.Objects) //para comparar
+			{
+
+				if (ventaProducto.Producto.IdProducto == IdProducto)
+				{
+					ventaProducto.Cantidad -= 1;//aumenta la cantidad
+				}
+			}
+			return View("Carrito", result);
+		}
+
 	}
 }

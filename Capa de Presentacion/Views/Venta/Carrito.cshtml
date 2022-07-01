@@ -34,81 +34,28 @@
     {
         <div class="row">
             <div class="col-md-12">
-                <table class="table table-bordered table-responsive">
-                    <thead>
-                        <tr>
 
-                            <td class="hidden">IdProducto</td>
-                            <td class="text-center" style=" font-weight:bold;">Nombre</td>
-                            <td class="text-center" style=" font-weight:bold;">Precio Unitario</td>
-                            <td class="text-center" style=" font-weight:bold;">Stock</td>
-                            <td class="text-center" style=" font-weight:bold;">Descripción</td>
-                            <td class="text-center" style=" font-weight:bold;">Imagen</td>
-                            <td class="text-center" style=" font-weight:bold;">Cantidad</td>
-                            <td class="text-center" style=" font-weight:bold;">SubTotal</td>
-                            <td class="text-center" style=" font-weight:bold;">Eliminar</td>
-                        </tr>
-                    </thead>
-                    @*<tbody>*@
-
-                        @foreach (Capa_de_Modelo.Venta ventaProducto in Model.Objects)
-                        {
-                            <div class="bag-product">
-                                <div class="image">
-                                    @if (ventaProducto.Producto.Imagen != null)
-                                    {
-                                        <img src="data:image/jpeg;base64,@Convert.ToBase64String(ventaProducto.Producto.Imagen)" style=" height:150px; width: 150px;" />
-                                    }
-                                    else
-                                    {
-                                        <img src="~/Content/sinimagen.jpg" style=" height:150px; width:150px;" />
-                                    }
-                                </div>
-                                <div class="description">
-                                    <p class="product-code small muted hidden">@ventaProducto.Producto.IdProducto</p>
-                                    <h1>@ventaProducto.Producto.Nombre</h1>
-                                    <p class="description-text">@ventaProducto.Producto.Descripcion</p>
-                                    <h2>@ventaProducto.Producto.Precio</h2>
-                                    <div class="quantity-wrapper">
-                                        <div>
-                                            <label for="quantity" style="margin-right: 0.5rem;">Cantidad:</label>
-                                            <select name="quantity" style="margin-bottom: 1rem;">
-                                                <option value disabled>Por favor selecciona</option>
-                                                <option value="1" selected>1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                            </select>
-                                        </div>
-                                        <button class="btn-remove">Eliminar</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="bag-total">
-                                <div class="subtotal">
-                                    <p class="small">Subtotal:</p>
-                                    <p class="small">$ @(ventaProducto.Producto.Precio * ventaProducto.Cantidad)</p>
-                                </div>
-                            </div>
-
-
-
-                            @*<tr>
-
-                                <td class="hidden">@ventaProducto.Producto.IdProducto</td>
-                                <td>@ventaProducto.Producto.Nombre</td>
-                                <td class="text-center">@ventaProducto.Producto.Precio</td>
-                                <td class="text-center">@ventaProducto.Producto.Stock</td>
-                                <td>@ventaProducto.Producto.Descripcion</td>
-
-                                @if (ventaProducto.Producto.Imagen != null)
-                                {
-                                    <td class="text-center"><img src="data:image/jpeg;base64,@Convert.ToBase64String(ventaProducto.Producto.Imagen)" style=" height:150px; width: 150px;" /></td>
-                                }
-                                else
-                                {
-                                    <td class="text-center"><img src="~/Content/sinimagen.jpg" style=" height:150px; width:150px;" /></td>
-                                }
-                                <td>
+                @foreach (Capa_de_Modelo.Venta ventaProducto in Model.Objects)
+                {
+                    <div class="bag-product">
+                        <div class="image">
+                            @if (ventaProducto.Producto.Imagen != null)
+                            {
+                                <img src="data:image/jpeg;base64,@Convert.ToBase64String(ventaProducto.Producto.Imagen)" style=" height:150px; width: 150px;" />
+                            }
+                            else
+                            {
+                                <img src="~/Content/sinimagen.jpg" style=" height:150px; width:150px;" />
+                            }
+                        </div>
+                        <div class="description">
+                            <p class="product-code small muted hidden">@ventaProducto.Producto.IdProducto</p>
+                            <h1>@ventaProducto.Producto.Nombre</h1>
+                            <p class="description-text">@ventaProducto.Producto.Descripcion</p>
+                            <h2>@ventaProducto.Producto.Precio</h2>
+                            <div class="quantity-wrapper">
+                                <div>
+                                    <label for="quantity" style="margin-right: 0.5rem;">Cantidad:</label>
                                     @if (ventaProducto.Cantidad > 1)
                                     {
                                         <a class="btn btn-danger glyphicon glyphicon-minus" href="@Url.Action("Restar", "Venta", new { IdProducto = ventaProducto.Producto.IdProducto })"></a>
@@ -130,15 +77,22 @@
                                         <a class="btn btn-success glyphicon glyphicon-plus" href="@Url.Action("Sumar", "Venta", new { IdProducto = ventaProducto.Producto.IdProducto })"></a>
 
                                     }
-                                </td>
+                                </div>
+                                <a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Eliminar", "Venta", new { IdProducto = ventaProducto.Producto.IdProducto})" onclick="return confirm('Estas seguro que deseas eliminar este producto del carrito?');"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bag-total">
+                        <div class="subtotal">
+                            <p class="small">Subtotal:</p>
+                            <p class="small" id="Subtotal">$ @(ventaProducto.Producto.Precio * ventaProducto.Cantidad)</p>
+                        </div>
+                    </div>
 
-                                <td class="text-center">$ @(ventaProducto.Producto.Precio * ventaProducto.Cantidad)</td>
 
-                                <td class="text-center"><a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Eliminar", "Venta", new { IdProducto = ventaProducto.Producto.IdProducto})" onclick="return confirm('Estas seguro que deseas eliminar este producto del carrito?');"></a></td>
-                            </tr>*@
-                        }
-                    @*</tbody>*@
-                </table>
+
+
+                }
 
                 <div class="row">
                     <div class="col-md-12">
@@ -163,7 +117,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
 
@@ -180,3 +133,5 @@
     }
 
 </div>
+
+

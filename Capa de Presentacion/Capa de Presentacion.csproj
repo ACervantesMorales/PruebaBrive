@@ -265,6 +265,7 @@
     <Content Include="Views\Sucursal\Form.cshtml" />
     <Content Include="Views\Venta\GetAll.cshtml" />
     <Content Include="Views\Venta\Carrito.cshtml" />
+    <Content Include="Views\Venta\ValidationModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

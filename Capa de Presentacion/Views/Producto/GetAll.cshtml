@@ -31,7 +31,7 @@
                 <thead class="table-info fw-bold">
                     <tr>
                         <td>Editar</td>
-                        <td class="visually-hidden">IdProducto</td>
+                        <td style="display:none;"class="visually-hidden">IdProducto</td>
                         <td>Nombre</td>
                         <td>Precio</td>
                         <td>Descripcion</td>
@@ -43,25 +43,24 @@
                 <tbody class="table-light">
                     @foreach (Capa_de_Modelo.Producto producto in Model.Productos)
                     {
-                        <tr>
-                            <td><a class="btn btn-warning" href="@Url.Action("Form", "Producto", new { IdProducto = producto.IdProducto })"><i class="bi bi-pencil"></i></a></td>
-                            <td class="visually-hidden">@producto.IdProducto</td>
-                            <td>@producto.Nombre </td>
-                            <td>@producto.Precio</td>
-                            <td>@producto.Descripcion</td>
-                            <td>@producto.Stock </td>
-                            @if (producto.Imagen != null)
-                            {
-                                <td><img src="data:image/*;base64,@producto.Imagen" width="auto" height="50" /></td>
-                            }
-                            else
-                            {
+                    <tr>
+                        <td><a class="btn btn-warning" href="@Url.Action("Form", "Producto", new { IdProducto = producto.IdProducto })"><i class="bi bi-pencil"></i></a></td>
+                        <td style="display:none">@producto.IdProducto</td>
+                        <td>@producto.Nombre </td>
+                        <td>@producto.Precio</td>
+                        <td>@producto.Descripcion</td>
+                        <td>@producto.Stock </td>
+                        @if (producto.Imagen != null)
+                        {
+                             <td><img src="data:image/jpeg;base64,@Convert.ToBase64String(producto.Imagen)" style=" height:150px; width: 150px;" /></td>
+                        }
+                        else
+                        {
+                    <td><img src="~/Content/sinimagen.jpg" style=" height:150px; width:150px;" /></td>
+                        }
 
-                                <td><img src="~/Content/sinimagen.jpg" width="auto" height="50" id="Img" /></td>
-                            }
-
-                            <td><a class="btn btn-danger" href="@Url.Action("Delete", "Producto", new { IdProducto= producto.IdProducto})" onclick="return confirm('Desea eliminar el producto?');"><i class="bi bi-trash"></i></a></td>
-                        </tr>
+                        <td><a class="btn btn-danger" href="@Url.Action("Delete", "Producto", new { IdProducto= producto.IdProducto})" onclick="return confirm('Desea eliminar el producto?');"><i class="bi bi-trash"></i></a></td>
+                    </tr>
                     }
 
                 </tbody>

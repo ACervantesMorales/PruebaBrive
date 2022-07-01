@@ -29,3 +29,5 @@ namespace Capa_de_Servicios_WCF
         AuxiliarWCF GetById(int IdProducto);
     }
 }
+
+
