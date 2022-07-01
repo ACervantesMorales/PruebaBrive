@@ -23,11 +23,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ImagenesProductos", "Imagen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa de Servicios WCF", "Capa de Servicios WCF\Capa de Servicios WCF.csproj", "{3403003E-D1AA-4B73-A850-D8FE88FBB29A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{1B50A97E-8B82-450E-9C7C-33DA5D177DC5}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\..\..\..\Program Files\Microsoft SQL Server\MSSQL11.MSSQLSERVER\MSSQL\Backup\PruebaBrive.bak = ..\..\..\..\..\..\Program Files\Microsoft SQL Server\MSSQL11.MSSQLSERVER\MSSQL\Backup\PruebaBrive.bak
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
