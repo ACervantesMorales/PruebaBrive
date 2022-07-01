@@ -31,7 +31,7 @@
                 <thead class="table-info fw-bold">
                     <tr>
                         <td>Editar</td>
-                        <td class="visually-hidden">IdSucursal</td>
+                        <td style="display:none;">IdSucursal</td>
                         <td>Nombre</td>
                         <td>Ubicacion</td>
                         <td>Eliminar</td>
@@ -42,7 +42,7 @@
                     {
                         <tr>
                             <td><a class="btn btn-warning" href="@Url.Action("Form", "Sucursal", new { IdSucursal = sucursal.IdSucursal })"><i class="bi bi-pencil"></i></a></td>
-                            <td class="visually-hidden">@sucursal.IdSucursal</td>
+                            <td style="display:none;">@sucursal.IdSucursal</td>
                             <td>@sucursal.Nombre </td>
                             <td>@sucursal.Ubicacion</td>
 
