@@ -341,7 +341,7 @@
           <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetProductoBySucursal" ReturnType="Collection(PruebaBriveModel.GetProductoBySucursal_Result)">
-            <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
+          <Parameter Name="IdSucursal" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="ProductoGetAll_Result">

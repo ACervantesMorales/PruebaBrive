@@ -49,5 +49,12 @@ namespace Capa_de_Presentacion.Controllers
                 return RedirectToAction("Login");
             }
         }
+
+        [HttpGet]
+        public ActionResult CerrarSesion()
+        {
+            Session["Usuario"] = null;
+            return RedirectToAction("Login");
+        }
     }
 }

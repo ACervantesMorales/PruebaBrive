@@ -288,6 +288,8 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\NuevosScripts\accordions.js" />
     <Content Include="Scripts\NuevosScripts\custom.js" />
+    <Content Include="Scripts\NuevosScripts\File.js" />
+    <Content Include="Scripts\NuevosScripts\FormularioCompra.js" />
     <Content Include="Scripts\NuevosScripts\isotope.js" />
     <Content Include="Scripts\NuevosScripts\owl.js" />
     <Content Include="Scripts\NuevosScripts\slick.js" />

@@ -36,25 +36,37 @@
                 }
                 @if (usuario.Rol.IdRol == 1)
                 {
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("GetAll", "Producto")">Producto</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("GetAll", "Sucursal")">Sucursal</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("GetAll", "Venta")">Venta</a>
-                        </li>
-                    </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("GetAll", "Producto")">Producto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("GetAll", "Sucursal")">Sucursal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("GetAll", "Venta")">Venta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">@usuario.UserName</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("CerrarSesion", "Login")">Cerrar Sesion</a>
+                    </li>
+                </ul>
                 }
                 else
                 {
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("GetAll", "Venta")">Venta</a>
-                        </li>
-                    </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("GetAll", "Venta")">Venta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">@usuario.UserName</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("CerrarSesion", "Login")">Cerrar Sesion</a>
+                    </li>
+                </ul>
                 }
             </div>
         </div>

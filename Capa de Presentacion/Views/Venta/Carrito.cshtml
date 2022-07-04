@@ -114,6 +114,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div style="float:right">
+                            @*@Html.ActionLink("Comprar", "ModalCompra", "Venta", htmlAttributes: new { @class = "btn btn-info btn-lg" })*@
                             <button style type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#success_tic">Comprar</button>
                         </div>
                     </div>
@@ -133,35 +134,97 @@
         </div>
     }
 
-    <!-- Modal -->
+    @{
+        Capa_de_Modelo.Usuario usuario = new Capa_de_Modelo.Usuario();
+        usuario = (Capa_de_Modelo.Usuario)(Session["Usuario"]);
+    }
+
+
     <div id="success_tic" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                            <h4 class="modal-title" id="myModalLabel">Complete sus datos de compra</h4>
+                        </div>
 
-            <!-- Modal content-->
-            <div class="modal-content">
-                @*<a class="close" href="#" data-dismiss="modal">&times;</a>*@
-                <div class="page-body">
-                    <div class="head">
-                        <h3 style="margin-top:5px;">Se ha realizado su compra con exito</h3>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <input type="text" class="form-control txtLimpiar" id="txtNombre" placeholder="Nombre" value="@usuario.Nombre" disabled="disabled" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control txtLimpiar" id="txtApellidoPaterno" placeholder="Nombre" value="@usuario.ApellidoPaterno" disabled="disabled" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control txtLimpiar" id="txtApellidoMaterno" placeholder="Apellido Paterno" value="@usuario.ApellidoMaterno" disabled="disabled" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control txtLimpiar" id="txtApellidoMaterno" placeholder="Calle" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control txtLimpiar" id="txtApellidoMaterno" placeholder="Colonia" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control txtLimpiar" id="txtApellidoMaterno" placeholder="Estado" />
+                                </div>
+                                <div id="smart-button-container">
+                                    <div style="text-align: center;">
+                                        <div id="paypal-button-container"></div>
+                                    </div>
+                                </div>
+                                <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
+                                <script>
+                                    function initPayPalButton() {
+                                        paypal.Buttons({
+                                            style: {
+                                                shape: 'rect',
+                                                color: 'gold',
+                                                layout: 'vertical',
+                                                label: 'paypal',
+
+                                            },
+
+                                            createOrder: function (data, actions) {
+                                                return actions.order.create({
+                                                    purchase_units: [{ "amount": { "currency_code": "USD", "value": 1 } }]
+                                                });
+                                            },
+
+                                            onApprove: function (data, actions) {
+                                                return actions.order.capture().then(function (orderData) {
+
+                                                    // Full available details
+                                                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+
+                                                    // Show a success message within this page, e.g.
+                                                    const element = document.getElementById('paypal-button-container');
+                                                    element.innerHTML = '';
+                                                    element.innerHTML = '<h3>Thank you for your payment!</h3>';
+
+                                                    // Or go to another URL:  actions.redirect('thank_you.html');
+
+                                                });
+                                            },
+
+                                            onError: function (err) {
+                                                console.log(err);
+                                            }
+                                        }).render('#paypal-button-container');
+                                    }
+                                    initPayPalButton();
+                                </script>
+                            </form>
+                        </div>
+
+                        <div class="modal-footer">
+                            @Html.ActionLink("Comprar", "ModalCompra", "Venta", htmlAttributes: new { @class = "btn btn-success", @style = "display:inline-block;" })
+                        </div>
                     </div>
-
-                    <h1 style="text-align:center;">
-                        <div class="checkmark-circle">
-                            <div class="background"></div>
-                            <div class="checkmark draw"></div>
-                        </div>
-                        <div class="modal-footer ">
-                            @Html.ActionLink("OK", "GetAll", "Venta", htmlAttributes: new { @class = "btn btn-primary" })
-                        </div>
-                        <h1>
-                            
-
                 </div>
+
             </div>
+
         </div>
-
-    </div>
-
-</div>
 
 

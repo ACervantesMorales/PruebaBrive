@@ -13,13 +13,17 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            @{
+                Capa_de_Modelo.Usuario usuario = new Capa_de_Modelo.Usuario();
+                usuario = (Capa_de_Modelo.Usuario)(Session["Usuario"]);
+            }
             <div class="modal-body">
-                <h5>@ViewBag.Message</h5>
+                <h5>Se ha realizado una compra con exito a nombre de @usuario.Nombre @usuario.ApellidoPaterno @usuario.ApellidoMaterno</h5>
             </div>
+
+
             <div class="modal-footer">
-                <div class="modal-footer">
-                    @Html.ActionLink("OK", "GetAll", "Venta", htmlAttributes: new { @class = "btn btn-danger" })
-                </div>
+                @Html.ActionLink("OK", "GetAll", "Venta", htmlAttributes: new { @class = "btn btn-primary" })
             </div>
         </div>
     </div>

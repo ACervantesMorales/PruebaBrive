@@ -54,31 +54,17 @@ namespace Capa_de_Presentacion.Controllers
 			}
 			return View(productoSucursal);
 		}
-        //[HttpGet]
-        //public ActionResult GetAll()
-        //{
-        //    ProductoService.ProductoServiceClient serviceUsuario = new ProductoService.ProductoServiceClient();
-        //    var auxiliar = serviceUsuario.GetAll();
-
-        //    Capa_de_Modelo.Producto producto = new Capa_de_Modelo.Producto();
-
-        //    if (auxiliar.Correct)
-        //    {
-        //        producto.Productos = auxiliar.Objects.ToList();
-        //    }
-
-        //    return View(producto);
-        //}
+        
 
 		[HttpGet]
-		public ActionResult Carrito(int? IdProducto)//int IdProducto
+		public ActionResult Carrito(int? IdProducto)
 		{
 			Capa_de_Modelo.Auxiliar auxiliar = new Capa_de_Modelo.Auxiliar();
 			auxiliar.Objects = new List<object>();
 			if (IdProducto != null)
 			{
 				if (Session["Carrito"] == null)
-				{ //Inicia sesion para agregar producto al carrito 
+				{ 
 
 					Capa_de_Modelo.Venta ventaProducto = new Capa_de_Modelo.Venta();
 
@@ -93,7 +79,6 @@ namespace Capa_de_Presentacion.Controllers
 					{
 						ventaProducto.Producto = (Capa_de_Modelo.Producto)resultProducto.Object;
 
-						//result.Objects = new List<object>();
 						auxiliar.Objects.Add(ventaProducto);
 					}
 
@@ -101,19 +86,19 @@ namespace Capa_de_Presentacion.Controllers
 				}
 
 				else
-				{// comprobar si ya existe informacion en el carrito
+				{
 					auxiliar.Objects = (List<Object>)Session["Carrito"];
 
 					bool Existe = false;
-					var indice = 0; //variable para el index
+					var indice = 0;
 
 					foreach (Capa_de_Modelo.Venta ventaProducto in auxiliar.Objects)
-					{// foreach que recorre el objeto venta producto
+					{
 						if (ventaProducto.Producto.IdProducto == IdProducto)
-						{// if que compara el id de el producto con el de ventaproducto
+						{
 
 							Existe = true;
-							indice = auxiliar.Objects.IndexOf(ventaProducto);//index 
+							indice = auxiliar.Objects.IndexOf(ventaProducto); 
 
 						}
 					}
@@ -122,7 +107,7 @@ namespace Capa_de_Presentacion.Controllers
 					{
 						foreach (Capa_de_Modelo.Venta ventaProducto in auxiliar.Objects)
 						{
-							ventaProducto.Cantidad = ventaProducto.Cantidad + 1;//contador 
+							ventaProducto.Cantidad = ventaProducto.Cantidad + 1;
 						}
 
 					}
@@ -162,14 +147,14 @@ namespace Capa_de_Presentacion.Controllers
 			Capa_de_Modelo.Auxiliar auxiliar = new Capa_de_Modelo.Auxiliar();
 			auxiliar.Objects = (List<Object>)Session["Carrito"];
 
-			var indice = 0; //variable para el index
+			var indice = 0; 
 
 			foreach (Capa_de_Modelo.Venta ventaProducto in auxiliar.Objects)
-			{// foreach que recorre el objeto venta producto
+			{
 				if (ventaProducto.Producto.IdProducto == IdProducto)
-				{// if que compara el id de el producto con el de ventaproducto
+				{
 
-					indice = auxiliar.Objects.IndexOf(ventaProducto);//index 
+					indice = auxiliar.Objects.IndexOf(ventaProducto); 
 
 				}
 			}
@@ -182,7 +167,8 @@ namespace Capa_de_Presentacion.Controllers
 
 		public ActionResult ModalCompra()
 		{
-			ViewBag.Message = "Se ha realizado su compra con exito";
+
+			Session["Carrito"] = null;
 			return PartialView("ValidationModal");
 		}
 
@@ -190,36 +176,43 @@ namespace Capa_de_Presentacion.Controllers
 		{
 			Capa_de_Modelo.Auxiliar result = new Capa_de_Modelo.Auxiliar();
 
-			result.Objects = (List<Object>)Session["Carrito"];//unboxing de la lista
+			result.Objects = (List<Object>)Session["Carrito"];
 
-			foreach (Capa_de_Modelo.Venta ventaProducto in result.Objects) //para comparar
+			foreach (Capa_de_Modelo.Venta ventaProducto in result.Objects) 
 			{
 				if (ventaProducto.Producto.IdProducto == IdProducto)
 				{
 
-					ventaProducto.Cantidad += 1;//aumenta la cantida
+					ventaProducto.Cantidad += 1;
 
 				}
 			}
 			return View("Carrito", result);
-		} // metodo que le agrega 1 a la cantidad del producto en la lista de venta 
+		} 
 
 		public ActionResult Restar(int IdProducto)
 		{
 			Capa_de_Modelo.Auxiliar result = new Capa_de_Modelo.Auxiliar();
 
-			result.Objects = (List<Object>)Session["Carrito"];//unboxing de la lista
+			result.Objects = (List<Object>)Session["Carrito"];
 
-			foreach (Capa_de_Modelo.Venta ventaProducto in result.Objects) //para comparar
+			foreach (Capa_de_Modelo.Venta ventaProducto in result.Objects) 
 			{
 
 				if (ventaProducto.Producto.IdProducto == IdProducto)
 				{
-					ventaProducto.Cantidad -= 1;//aumenta la cantidad
+					ventaProducto.Cantidad -= 1;
 				}
 			}
 			return View("Carrito", result);
 		}
+
+		[HttpGet]
+		public ActionResult Comprar()
+        {
+			Session["Carrito"] = null;
+			return RedirectToAction("GetAll");
+        }
 
 	}
 }
