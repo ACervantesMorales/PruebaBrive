@@ -12,6 +12,9 @@
         <AssociationConnector Association="PruebaBriveModel.FK__ProductoS__IdPro__1ED998B2" ManuallyRouted="false" />
         <AssociationConnector Association="PruebaBriveModel.FK__Venta__IdProduct__22AA2996" ManuallyRouted="false" />
         <AssociationConnector Association="PruebaBriveModel.FK__ProductoS__IdSuc__1FCDBCEB" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PruebaBriveModel.Rol" Width="1.5" PointX="5.375" PointY="1.5" />
+        <EntityTypeShape EntityType="PruebaBriveModel.Usuario" Width="1.5" PointX="7.625" PointY="1" />
+        <AssociationConnector Association="PruebaBriveModel.FK__Usuario__IdRol__398D8EEE" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

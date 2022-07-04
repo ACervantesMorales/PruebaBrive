@@ -61,6 +61,9 @@
     <Compile Include="ProductoGetAll_Result.cs">
       <DependentUpon>PruebaBriveModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ProductoGetByIdSucursal_Result.cs">
+      <DependentUpon>PruebaBriveModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ProductoGetById_Result.cs">
       <DependentUpon>PruebaBriveModel.tt</DependentUpon>
     </Compile>
@@ -86,6 +89,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PruebaBriveModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Rol.cs">
+      <DependentUpon>PruebaBriveModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Sucursal.cs">
       <DependentUpon>PruebaBriveModel.tt</DependentUpon>
     </Compile>
@@ -93,6 +99,12 @@
       <DependentUpon>PruebaBriveModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SucursalGetById_Result.cs">
+      <DependentUpon>PruebaBriveModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario.cs">
+      <DependentUpon>PruebaBriveModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UsuarioGetByUserName_Result.cs">
       <DependentUpon>PruebaBriveModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Venta.cs">

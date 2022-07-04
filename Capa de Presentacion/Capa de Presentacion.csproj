@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -51,6 +51,9 @@
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -124,11 +127,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -138,6 +136,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\VentaController.cs" />
     <Compile Include="Controllers\SucursalController.cs" />
@@ -161,17 +160,27 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\cssLogin\main.css" />
+    <Content Include="Content\cssLogin\util.css" />
     <Content Include="Content\EstiloCarrito.css" />
     <Content Include="Content\EstiloSuccess.css" />
     <Content Include="Content\flex-slider.css" />
     <Content Include="Content\fontawesome.css" />
     <Content Include="Content\owl.css" />
+    <Content Include="Content\productos.jpg" />
     <Content Include="Content\sabritas.jpg" />
     <Content Include="Content\sinimagen.jpg" />
     <Content Include="Content\templatemo-sixteen.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\flexslider-icon.svg" />
     <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="fonts\fontsLogin\iconic\css\material-design-iconic-font.css" />
+    <Content Include="fonts\fontsLogin\iconic\css\material-design-iconic-font.min.css" />
+    <Content Include="fonts\fontsLogin\iconic\fonts\Material-Design-Iconic-Font.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\slick.svg" />
     <Content Include="Global.asax" />
@@ -210,6 +219,61 @@
     <None Include="Connected Services\ProductoService\ProductoService5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\less\core.less" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\less\list.less" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\less\path.less" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="fonts\fontsLogin\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="fonts\fontsLogin\iconic\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="fonts\fontsLogin\iconic\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="fonts\fontsLogin\iconic\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="fonts\fontsLogin\iconic\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="fonts\fontsLogin\poppins\Poppins-Black.ttf" />
+    <Content Include="fonts\fontsLogin\poppins\Poppins-BlackItalic.ttf" />
+    <Content Include="fonts\fontsLogin\poppins\Poppins-Bold.ttf" />
+    <Content Include="fonts\fontsLogin\poppins\Poppins-BoldItalic.ttf" />
+    <Content Include="fonts\fontsLogin\poppins\Poppins-ExtraBold.ttf" />
+    <Content Include="fonts\fontsLogin\poppins\Poppins-ExtraBoldItalic.ttf" />
+    <Content Include="fonts\fontsLogin\poppins\Poppins-ExtraLight.ttf" />
+    <Content Include="fonts\fontsLogin\poppins\Poppins-ExtraLightItalic.ttf" />
+    <Content Include="fonts\fontsLogin\poppins\Poppins-Italic.ttf" />
+    <Content Include="fonts\fontsLogin\poppins\Poppins-Light.ttf" />
+    <Content Include="fonts\fontsLogin\poppins\Poppins-LightItalic.ttf" />
+    <Content Include="fonts\fontsLogin\poppins\Poppins-Medium.ttf" />
+    <Content Include="fonts\fontsLogin\poppins\Poppins-MediumItalic.ttf" />
+    <Content Include="fonts\fontsLogin\poppins\Poppins-Regular.ttf" />
+    <Content Include="fonts\fontsLogin\poppins\Poppins-SemiBold.ttf" />
+    <Content Include="fonts\fontsLogin\poppins\Poppins-SemiBoldItalic.ttf" />
+    <Content Include="fonts\fontsLogin\poppins\Poppins-Thin.ttf" />
+    <Content Include="fonts\fontsLogin\poppins\Poppins-ThinItalic.ttf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -220,12 +284,43 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jsLogin\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\NuevosScripts\accordions.js" />
     <Content Include="Scripts\NuevosScripts\custom.js" />
     <Content Include="Scripts\NuevosScripts\isotope.js" />
     <Content Include="Scripts\NuevosScripts\owl.js" />
     <Content Include="Scripts\NuevosScripts\slick.js" />
+    <Content Include="Scripts\vendorLogin\animate\animate.css" />
+    <Content Include="Scripts\vendorLogin\animsition\css\animsition.css" />
+    <Content Include="Scripts\vendorLogin\animsition\css\animsition.min.css" />
+    <Content Include="Scripts\vendorLogin\animsition\js\animsition.js" />
+    <Content Include="Scripts\vendorLogin\animsition\js\animsition.min.js" />
+    <Content Include="Scripts\vendorLogin\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Scripts\vendorLogin\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Scripts\vendorLogin\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Scripts\vendorLogin\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Scripts\vendorLogin\bootstrap\css\bootstrap.css" />
+    <Content Include="Scripts\vendorLogin\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Scripts\vendorLogin\bootstrap\js\bootstrap.js" />
+    <Content Include="Scripts\vendorLogin\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Scripts\vendorLogin\bootstrap\js\popper.js" />
+    <Content Include="Scripts\vendorLogin\bootstrap\js\popper.min.js" />
+    <Content Include="Scripts\vendorLogin\bootstrap\js\tooltip.js" />
+    <Content Include="Scripts\vendorLogin\countdowntime\countdowntime.js" />
+    <Content Include="Scripts\vendorLogin\css-hamburgers\hamburgers.css" />
+    <Content Include="Scripts\vendorLogin\css-hamburgers\hamburgers.min.css" />
+    <Content Include="Scripts\vendorLogin\daterangepicker\daterangepicker.css" />
+    <Content Include="Scripts\vendorLogin\daterangepicker\daterangepicker.js" />
+    <Content Include="Scripts\vendorLogin\daterangepicker\moment.js" />
+    <Content Include="Scripts\vendorLogin\daterangepicker\moment.min.js" />
+    <Content Include="Scripts\vendorLogin\jquery\jquery-3.2.1.min.js" />
+    <Content Include="Scripts\vendorLogin\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="Scripts\vendorLogin\perfect-scrollbar\perfect-scrollbar.min.js" />
+    <Content Include="Scripts\vendorLogin\select2\select2.css" />
+    <Content Include="Scripts\vendorLogin\select2\select2.js" />
+    <Content Include="Scripts\vendorLogin\select2\select2.min.css" />
+    <Content Include="Scripts\vendorLogin\select2\select2.min.js" />
     <Content Include="Scripts\vendor\bootstrap\css\bootstrap.css" />
     <Content Include="Scripts\vendor\bootstrap\css\bootstrap.min.css" />
     <Content Include="Scripts\vendor\bootstrap\js\bootstrap.bundle.js" />
@@ -267,6 +362,13 @@
     <Content Include="Views\Venta\GetAll.cshtml" />
     <Content Include="Views\Venta\Carrito.cshtml" />
     <Content Include="Views\Venta\ValidationModal.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Scripts\vendorLogin\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="Scripts\vendorLogin\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="Scripts\vendorLogin\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="Scripts\vendorLogin\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Scripts\vendorLogin\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Scripts\vendorLogin\bootstrap\css\bootstrap.min.css.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -334,9 +436,9 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

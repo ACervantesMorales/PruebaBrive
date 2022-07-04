@@ -4,81 +4,90 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h2>Productos Existentes</h2>
-        </div>
-    </div>
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/EstiloTabla.css">
 
-    <div class="row">
-        <div class="col-md-12">
-            <h5>Seleccione un producto para editarlo o + para agregar...</h5>
-            <hr />
-        </div>
-    </div>
+    <script src="~/Scripts/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Scripts/NuevosScripts/popper.js"></script>
+    <script src="~/Scripts/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/NuevosScripts/main.js"></script>
 
-    <div class="row">
-        <div class="d-flex justify-content-end" style="float:right;">
-            @Html.ActionLink("+", "Form", "Producto", htmlAttributes: new { @class = "btn btn-success" })
-        </div>
-    </div>
+</head>
 
-    @if (Model.Productos != null)
-    {
-        <div class="row table-responsive">
-            <table style="text-align:center; vertical-align:middle;" class="table table-bordered table-hover table-striped">
-                <thead class="table-info fw-bold">
-                    <tr>
-                        <td>Editar</td>
-                        <td style="display:none;"class="visually-hidden">IdProducto</td>
-                        <td>Nombre</td>
-                        <td>Precio</td>
-                        <td>Descripcion</td>
-                        <td>Stock</td>
-                        <td>Imagen</td>
-                        <td>Eliminar</td>
-                    </tr>
-                </thead>
-                <tbody class="table-light">
-                    @foreach (Capa_de_Modelo.Producto producto in Model.Productos)
+<body>
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-5">
+                    <h2 class="heading-section">Productos existentes</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="text-right mb-4">Selecciona un producto para editalo, o + para agregar uno nuevo...</h4>
+                    <div class="row mb-4 justify-content-end">
+                        <div class="d-flex justify-content-end">
+                            @Html.ActionLink("+", "Form", "Producto", htmlAttributes: new { @class = "btn btn-success" })
+                        </div>
+                    </div>
+                    @if (Model.Productos != null)
                     {
-                    <tr>
-                        <td><a class="btn btn-warning" href="@Url.Action("Form", "Producto", new { IdProducto = producto.IdProducto })"><i class="bi bi-pencil"></i></a></td>
-                        <td style="display:none">@producto.IdProducto</td>
-                        <td>@producto.Nombre </td>
-                        <td>@producto.Precio</td>
-                        <td>@producto.Descripcion</td>
-                        <td>@producto.Stock </td>
-                        @if (producto.Imagen != null)
-                        {
-                             <td><img src="data:image/jpeg;base64,@Convert.ToBase64String(producto.Imagen)" style=" height:150px; width: 150px;" /></td>
-                        }
-                        else
-                        {
-                    <td><img src="~/Content/sinimagen.jpg" style=" height:150px; width:150px;" /></td>
-                        }
+                        <div class="table-wrap">
+                            <table class="table">
+                                <thead class="thead-primary">
+                                    <tr>
+                                        <th>Editar</th>
+                                        <th style="display:none;">IdProducto</th>
+                                        <th>Nombre</th>
+                                        <th>Precio</th>
+                                        <th>Descripcion</th>
+                                        <th>Stock</th>
+                                        <th>Imagen</th>
+                                        <th>Eliminar</th>
+                                    </tr>
+                                </thead>
+                                <tbody style="vertical-align: middle;">
+                                    @foreach (Capa_de_Modelo.Producto producto in Model.Productos)
+                                    {
+                                        <tr>
+                                            <td scope="row" class="scope" style="vertical-align:middle;"><a class="btn btn-warning" href="@Url.Action("Form", "Producto", new { IdProducto = producto.IdProducto })"><i class="bi bi-pen-fill"></i></a></td>
+                                            <td style="display:none;" style="vertical-align:middle;">@producto.IdProducto</td>
+                                            <td style="vertical-align:middle;">@producto.Nombre</td>
+                                            <td style="vertical-align:middle;">@producto.Precio</td>
+                                            <td style="vertical-align:middle;">@producto.Descripcion</td>
+                                            <td style="vertical-align:middle;">@producto.Stock</td>
 
-                        <td><a class="btn btn-danger" href="@Url.Action("Delete", "Producto", new { IdProducto= producto.IdProducto})" onclick="return confirm('Desea eliminar el producto?');"><i class="bi bi-trash"></i></a></td>
-                    </tr>
+                                            @if (producto.Imagen != null)
+                                            {
+                                                <td><img src="data:image/jpeg;base64,@Convert.ToBase64String(producto.Imagen)" style=" height:150px; width: 150px;" /></td>
+                                            }
+                                            else
+                                            {
+                                                <td><img src="~/Content/sinimagen.jpg" style=" height:150px; width:150px;" /></td>
+                                            }
+
+                                            <td style="vertical-align:middle;"><a class="btn btn-danger" href="@Url.Action("Delete", "Producto", new { IdProducto= producto.IdProducto})" onclick="return confirm('Desea eliminar el producto?');"><i class="bi bi-trash-fill"></i></a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
                     }
 
-                </tbody>
-            </table>
-        </div>
-    }
-    else
-    {
-        <div class="row">
-            <div class="col-md-12">
-                <div class="alert alert-danger">
-                    No se encontraron productos registrados.
                 </div>
             </div>
         </div>
-    }
+    </section>
 
-</div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
 <script language="text/Javascript">
 
     cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field

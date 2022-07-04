@@ -4,96 +4,88 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<head>
+    <link href="~/Scripts/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="~/Scripts/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="~/Scripts/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="~/Scripts/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="~/Content/EstiloFormulario.css" rel="stylesheet" media="all">
+
+    <script src="~/Scripts/vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="~/Scripts/vendor/select2/select2.min.js"></script>
+    <script src="~/Scripts/vendor/datepicker/moment.min.js"></script>
+    <script src="~/Scripts/vendor/datepicker/daterangepicker.js"></script>
+
+    <!-- Main JS-->
+    <script src="~/Scripts/global.js"></script>
+</head>
+
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h2>Producto</h2>
-            <h5>Ingrese los datos del producto:</h5>
-        </div>
-    </div>
 
-
-    <div class="row">
-        <div class="col-md-12">
-            @using (Html.BeginForm("Form", "Producto", FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
-            <div class="form-horizontal">
-                <div class="row">
-                        <div class="col-md-6">
-                            @Html.TextBoxFor(model => model.IdProducto, new { @class = "hidden form-control", autocomplete = "off" })
-                        </div>
+    <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w780">
+            <div class="card card-3">
+                <div class="card-heading">PRODUCTO
                 </div>
+                <div class="card-body">
+                    <h2 class="title">Ingresa los datos:</h2>
+                    @using (Html.BeginForm("Form", "Producto", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                            <div class="input-group">
+                                @Html.TextBoxFor(model => model.IdProducto, new { @class = "hidden form-control", autocomplete = "off" })
+                            </div>
 
-                <div class="row">
-                        <div class="col-md-6">
-                            @Html.LabelFor(model => model.Nombre)
-                            @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", @id = "txtNombre" })
-                            @Html.ValidationMessageFor(model => model.Nombre)
-                        </div>
+                            <div class="input-group">
+                                @Html.LabelFor(model => model.Nombre)
+                                @Html.TextBoxFor(model => model.Nombre, new { @class = "input--style-3", @id = "txtNombre", @placeholder = "Nombre" })
+                            </div>
 
-                        <div class="col-md-6">
-                            @Html.LabelFor(model => model.Precio)
-                            @Html.TextBoxFor(model => model.Precio, new { @class = "form-control", @id = "txtNombre" })
-                            @Html.ValidationMessageFor(model => model.Precio)
-                        </div>
+                            <div class="input-group">
+                                @Html.LabelFor(model => model.Precio)
+                                @Html.TextBoxFor(model => model.Precio, new { @class = "input--style-3", @id = "txtNombre", @placeholder = "Precio" })
+                            </div>
+
+                            <div class="input-group">
+                                @Html.LabelFor(model => model.Descripcion)
+                                @Html.TextBoxFor(model => model.Descripcion, new { @class = "input--style-3", @id = "txtNombre", @placeholder = "Descripcion" })
+                            </div>
+                            <div class="input-group">
+                                @Html.LabelFor(model => model.Stock)
+                                @Html.TextBoxFor(model => model.Stock, new { @class = "input--style-3", @id = "txtNombre", @placeholder = "Stock" })
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-card-image"></i></span>
+                                    <input type='file' id="inputFile" class="form-control" name="ImageProducto" onchange="validarFile(this), validarSize(this), readURL(this);" />
+                                    @Html.ValidationMessageFor(model => model.Imagen, null, new { @class = "text-danger" })
+                                </div>
+
+                                @if (Model.Imagen != null)
+                                {
+                                    <img id="Img" src="data:image/jpeg;base64,@Convert.ToBase64String(Model.Imagen)" style=" height:120px; width: 120px; margin:auto;" />
+                                }
+                                else
+                                {
+                                    <img id="Img" src="~/Content/sinimagen.jpg" style=" height:120px; width:120px; margin:auto;" />
+                                }
+                                @Html.HiddenFor(model => model.Imagen)
+                            </div>
+
+                            <div class="p-t-10">
+                                <input type="submit" value="Guardar" class="btn btn-success" />
+                                @Html.ActionLink("Regresar", "GetAll", "Producto", htmlAttributes: new { @class = "btn btn-danger", @style = "display:inline-block;" })
+                            </div>
+                    }
                 </div>
-                    
-               
-                    
-                <div class="row">
-                        <div class="col-md-6">
-                            @Html.LabelFor(model => model.Descripcion)
-                            @Html.TextBoxFor(model => model.Descripcion, new { @class = "form-control", @id = "txtNombre" })
-                            @Html.ValidationMessageFor(model => model.Descripcion)
-                        </div>
-                        <div class="col-md-6">
-                            @Html.LabelFor(model => model.Stock)
-                            @Html.TextBoxFor(model => model.Stock, new { @class = "form-control", @id = "txtNombre" })
-                            @Html.ValidationMessageFor(model => model.Stock)
-                        </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-4">
-                        @Html.LabelFor(model => model.Imagen)
-
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-card-image"></i></span>
-                            <input type='file' id="inputFile" class="form-control" name="ImageProducto" onchange="validarFile(this), validarSize(this), readURL(this);" />
-                            @Html.ValidationMessageFor(model => model.Imagen, null, new { @class = "text-danger" })
-                        </div>
-
-                        @*@if (Model.Imagen != null)
-                        {
-                            <img id="Img" src="data:image/*;base64,@Model.Imagen" style="width:auto ; height:100px" />
-                        }
-                        else
-                        {
-                            <img id="Img" src="~/Content/sinimagen.jpg" style="width:auto ; height:100px" />
-                        }*@
-
-                        @if (Model.Imagen != null)
-                        {
-                            <img id="Img" src="data:image/jpeg;base64,@Convert.ToBase64String(Model.Imagen)" style=" height:150px; width: 150px;" />
-                        }
-                        else
-                        {
-                            <img id="Img" src="~/Content/sinimagen.jpg" style=" height:150px; width:150px;" />
-                        }
-                    </div>
-                    @Html.HiddenFor(model => model.Imagen)
-                </div>
-                    
-                    <div class="row">
-                        <div class="col-md-3">
-                            <input type="submit" value="Guardar" class="btn btn-success" />
-                            @Html.ActionLink("Regresar", "GetAll", "Producto", htmlAttributes: new { @class = "btn btn-danger" })
-                        </div>
-                    </div>
-                </div>
-
-                }
             </div>
+        </div>
     </div>
 </div>
 
@@ -137,5 +129,5 @@
             }
         }
     </script>
-    }
+}
 

@@ -30,24 +30,39 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("GetAll", "Producto")">Producto</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("GetAll", "Sucursal")">Sucursal</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("GetAll", "Venta")">Venta</a>
-                    </li>
-                </ul>
+                @{
+                    Capa_de_Modelo.Usuario usuario = new Capa_de_Modelo.Usuario();
+                    usuario = (Capa_de_Modelo.Usuario)(Session["Usuario"]);
+                }
+                @if (usuario.Rol.IdRol == 1)
+                {
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("GetAll", "Producto")">Producto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("GetAll", "Sucursal")">Sucursal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("GetAll", "Venta")">Venta</a>
+                        </li>
+                    </ul>
+                }
+                else
+                {
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("GetAll", "Venta")">Venta</a>
+                        </li>
+                    </ul>
+                }
             </div>
         </div>
     </nav>
 </header>
 
 <body>
-        
+
     <div class="container body-content">
         @RenderBody()
         <hr />
