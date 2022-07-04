@@ -25,7 +25,7 @@ namespace Capa_de_Negocio
                             Capa_de_Modelo.ProductoSucursal productoSucursal = new Capa_de_Modelo.ProductoSucursal();
                             productoSucursal.Producto = new Capa_de_Modelo.Producto();
                             productoSucursal.Producto.IdProducto = obj.IdProducto;
-                            productoSucursal.Producto.Nombre = obj.Nombre;
+                            productoSucursal.Producto.Nombre = obj.Nombre1;
                             productoSucursal.Producto.Precio = obj.Precio;
                             productoSucursal.Producto.Descripcion = obj.Descripcion;
                             productoSucursal.Producto.Stock = obj.Stock;

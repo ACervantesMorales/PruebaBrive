@@ -1,4 +1,4 @@
-﻿@model Capa_de_Modelo.Producto
+﻿@model Capa_de_Modelo.ProductoSucursal
 @{
     ViewBag.Title = "GetAll";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -18,10 +18,26 @@
             </div>
             <div class="col-md-12">
                 <div class="filters-content">
+
+                    <div class="row" style="justify-content:center; margin-bottom:20px;">
+                        <h3>Selecciona una sucursal para filtrar los productos</h3>
+                    </div>
+                    @using (Html.BeginForm("GetAll", "Venta", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="row" style="margin-bottom: 20px; justify-content: center;">
+                            <div class="col-md-3">
+                                @Html.DropDownListFor(model => model.Sucursal.IdSucursal, new SelectList(Model.Sucursal.Sucursales, "IdSucursal", "Nombre"), "Selecciona una sucursal", new { @class = " form-control" })
+                            </div>
+                            <div class="col-md-1">
+                                <input type="submit" value="Buscar" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    }
+
                     <div class="row grid">
-                        @foreach (Capa_de_Modelo.Producto producto in Model.Productos)
+                        @foreach (Capa_de_Modelo.Producto producto in Model.Producto.Productos)
                         {
-                            <div class="col-lg-4 col-md-4 all des" style="height:390px;">
+                            <div class="col-lg-4 col-md-4 all des" style="height:400px;">
                                 <div class="product-item">
                                     @if (producto.Imagen != null)
                                     {
@@ -47,7 +63,7 @@
                                 </div>
                             </div>
                         }
-                       
+
                     </div>
                 </div>
             </div>

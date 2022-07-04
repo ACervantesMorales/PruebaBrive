@@ -169,5 +169,45 @@ namespace Capa_de_Negocio
             }
             return auxiliar;
         }
+        public static Capa_de_Modelo.Auxiliar ProductoGetBySucursal(int? IdSucursal)
+        {
+            Capa_de_Modelo.Auxiliar auxiliar = new Capa_de_Modelo.Auxiliar();
+            try
+            {
+                using (Capa_de_Datos.PruebaBriveEntities1 context = new Capa_de_Datos.PruebaBriveEntities1())
+                {
+                    var query = context.GetProductoBySucursal(IdSucursal).ToList();
+
+                    if (query != null)
+                    {
+                        auxiliar.Objects = new List<object>();
+                        foreach (var obj in query)
+                        {
+                            Capa_de_Modelo.Producto producto = new Capa_de_Modelo.Producto();
+                            producto.IdProducto = obj.IdProducto;
+                            producto.Nombre = obj.Nombre;
+                            producto.Precio = obj.Precio;
+                            producto.Descripcion = obj.Descripcion;
+                            producto.Stock = obj.Stock;
+                            producto.Imagen = obj.Imagen;
+
+                            auxiliar.Objects.Add(producto);
+                        }
+                        auxiliar.Correct = true;
+                    }
+                    else
+                    {
+                        auxiliar.Correct = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                auxiliar.Correct = false;
+                auxiliar.ErrorMessage = ex.Message;
+                auxiliar.Ex = ex;
+            }
+            return auxiliar;
+        }
     }
 }

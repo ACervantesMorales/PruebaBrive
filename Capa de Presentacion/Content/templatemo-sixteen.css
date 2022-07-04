@@ -428,6 +428,7 @@ a.filled-button:hover {
 .product-item {
 	border: 1px solid #eee;
 	margin-bottom: 30px;
+	height: 390px;
 }
 
 .product-item .down-content {

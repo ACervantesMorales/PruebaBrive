@@ -12,5 +12,6 @@ namespace Capa_de_Modelo
         public Capa_de_Modelo.Producto Producto { get; set; }
         public Capa_de_Modelo.Sucursal Sucursal { get; set; }
         public List<object> ProductosSucursal { get; set; }
+        public List<object> Sucursales { get; set; }
     }
 }

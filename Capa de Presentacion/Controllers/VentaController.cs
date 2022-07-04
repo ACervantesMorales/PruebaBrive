@@ -10,20 +10,65 @@ namespace Capa_de_Presentacion.Controllers
     public class VentaController : Controller
     {
         [HttpGet]
-        public ActionResult GetAll()
+		public ActionResult GetAll()
         {
-            ProductoService.ProductoServiceClient serviceUsuario = new ProductoService.ProductoServiceClient();
-            var auxiliar = serviceUsuario.GetAll();
+			Capa_de_Modelo.Producto producto = new Capa_de_Modelo.Producto();
+			Capa_de_Modelo.Sucursal sucursal = new Capa_de_Modelo.Sucursal();
+			Capa_de_Modelo.ProductoSucursal productoSucursal = new Capa_de_Modelo.ProductoSucursal();
 
-            Capa_de_Modelo.Producto producto = new Capa_de_Modelo.Producto();
+			Capa_de_Modelo.Auxiliar auxiliarProductos = Capa_de_Negocio.Producto.ProductoGetBySucursal(0);
+			Capa_de_Modelo.Auxiliar auxiliarSucursales = Capa_de_Negocio.Sucursal.GetAll();
 
-            if (auxiliar.Correct)
+			productoSucursal.Producto = new Capa_de_Modelo.Producto();
+			productoSucursal.Producto.Productos = new List<object>();
+			productoSucursal.Sucursal = new Capa_de_Modelo.Sucursal();
+			productoSucursal.Sucursal.Sucursales = new List<object>();
+
+			if (auxiliarProductos.Correct && auxiliarSucursales.Correct)
             {
-                producto.Productos = auxiliar.Objects.ToList();
+				productoSucursal.Producto.Productos = auxiliarProductos.Objects;
+				productoSucursal.Sucursal.Sucursales = auxiliarSucursales.Objects;
             }
-
-            return View(producto);
+			return View(productoSucursal);
         }
+
+		[HttpPost]
+		public ActionResult GetAll(Capa_de_Modelo.ProductoSucursal productoSucursal1)
+        {
+			Capa_de_Modelo.Producto producto = new Capa_de_Modelo.Producto();
+			Capa_de_Modelo.Sucursal sucursal = new Capa_de_Modelo.Sucursal();
+			Capa_de_Modelo.ProductoSucursal productoSucursal = new Capa_de_Modelo.ProductoSucursal();
+
+			Capa_de_Modelo.Auxiliar auxiliarProductos = Capa_de_Negocio.Producto.ProductoGetBySucursal(productoSucursal1.Sucursal.IdSucursal);
+			Capa_de_Modelo.Auxiliar auxiliarSucursales = Capa_de_Negocio.Sucursal.GetAll();
+
+			productoSucursal.Producto = new Capa_de_Modelo.Producto();
+			productoSucursal.Producto.Productos = new List<object>();
+			productoSucursal.Sucursal = new Capa_de_Modelo.Sucursal();
+			productoSucursal.Sucursal.Sucursales = new List<object>();
+
+			if (auxiliarProductos.Correct && auxiliarSucursales.Correct)
+			{
+				productoSucursal.Producto.Productos = auxiliarProductos.Objects;
+				productoSucursal.Sucursal.Sucursales = auxiliarSucursales.Objects;
+			}
+			return View(productoSucursal);
+		}
+        //[HttpGet]
+        //public ActionResult GetAll()
+        //{
+        //    ProductoService.ProductoServiceClient serviceUsuario = new ProductoService.ProductoServiceClient();
+        //    var auxiliar = serviceUsuario.GetAll();
+
+        //    Capa_de_Modelo.Producto producto = new Capa_de_Modelo.Producto();
+
+        //    if (auxiliar.Correct)
+        //    {
+        //        producto.Productos = auxiliar.Objects.ToList();
+        //    }
+
+        //    return View(producto);
+        //}
 
 		[HttpGet]
 		public ActionResult Carrito(int? IdProducto)//int IdProducto

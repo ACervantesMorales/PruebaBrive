@@ -55,6 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexion.cs" />
+    <Compile Include="GetProductoBySucursal_Result.cs">
+      <DependentUpon>PruebaBriveModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Producto.cs">
       <DependentUpon>PruebaBriveModel.tt</DependentUpon>
     </Compile>
