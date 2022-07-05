@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="~/Content/fontawesome.css">
     <link rel="stylesheet" href="~/Content/templatemo-sixteen.css">
     <link rel="stylesheet" href="~/Content/owl.css">
+    <link rel="stylesheet" href="~/Content/EstiloNav.css">
     <link rel="stylesheet" href="~/Content/Site.css">
     <script src="~/Scripts/vendor/jquery/jquery.min.js"></script>
     <script src="~/Scripts/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -22,57 +23,86 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 
 </head>
-<header>
-    <nav class="navbar navbar-expand-lg" id="navbar">
-        <div class="container">
-            <a class="navbar-brand" href="@Url.Action("GetAll", "Venta")"><h2>Prueba <em>AliCervantes</em></h2></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                @{
-                    Capa_de_Modelo.Usuario usuario = new Capa_de_Modelo.Usuario();
-                    usuario = (Capa_de_Modelo.Usuario)(Session["Usuario"]);
-                }
-                @if (usuario.Rol.IdRol == 1)
-                {
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("GetAll", "Producto")">Producto</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("GetAll", "Sucursal")">Sucursal</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("GetAll", "Venta")">Venta</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">@usuario.UserName</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("CerrarSesion", "Login")">Cerrar Sesion</a>
-                    </li>
-                </ul>
-                }
-                else
-                {
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("GetAll", "Venta")">Venta</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">@usuario.UserName</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("CerrarSesion", "Login")">Cerrar Sesion</a>
-                    </li>
-                </ul>
-                }
-            </div>
-        </div>
-    </nav>
-</header>
 
+    <div class="area"></div><nav class="main-menu" style="position:fixed;">
+    @{
+        Capa_de_Modelo.Usuario usuario = new Capa_de_Modelo.Usuario();
+        usuario = (Capa_de_Modelo.Usuario)(Session["Usuario"]);
+    }
+    @if (usuario.Rol.IdRol == 1)
+    {
+        <ul>
+            <li class="has-subnav">
+                <a class="nav-link" href="#">
+                    <i class="fa fa-user fa-2x"></i>
+                    <span class="nav-text">
+                        @usuario.UserName
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a class="nav-link" href="@Url.Action("GetAll", "Producto")">
+                    <i class="fa fa-product-hunt fa-2x"></i>
+                    <span class="nav-text">
+                        Producto
+                    </span>
+                </a>
+            </li>
+            <li class="has-subnav">
+                <a class="nav-link" href="@Url.Action("GetAll", "Sucursal")">
+                    <i class="fa fa-building fa-2x"></i>
+                    <span class="nav-text">
+                        Sucursal
+                    </span>
+                </a>
+
+            </li>
+            <li class="has-subnav">
+                <a class="nav-link" href="@Url.Action("GetAll", "Venta")">
+                    <i class="fa fa-shopping-cart fa-2x"></i>
+                    <span class="nav-text">
+                        Venta
+                    </span>
+                </a>
+            </li>
+            <li class="has-subnav">
+                <a class="nav-link" href="@Url.Action("CerrarSesion", "Login")">
+                    <i class="fa fa-sign-out fa-2x"></i>
+                    <span class="nav-text">
+                        Cerrar Sesion
+                    </span>
+                </a>
+            </li>
+        </ul>
+    }
+    else
+    {
+        <li class="has-subnav">
+            <a class="nav-link" href="#">
+                <i class="fa fa-user fa-2x"></i>
+                <span class="nav-text">
+                    @usuario.UserName
+                </span>
+            </a>
+        </li>
+        <li class="has-subnav">
+            <a class="nav-link" href="@Url.Action("GetAll", "Venta")">
+                <i class="fa fa-shopping-cart fa-2x"></i>
+                <span class="nav-text">
+                    Venta
+                </span>
+            </a>
+        </li>
+        <li class="has-subnav">
+            <a class="nav-link" href="@Url.Action("CerrarSesion", "Login")">
+                <i class="fa fa-sign-out fa-2x"></i>
+                <span class="nav-text">
+                    Cerrar Sesion
+                </span>
+            </a>
+        </li>
+    }
+</nav>
 <body>
 
     <div class="container body-content">
