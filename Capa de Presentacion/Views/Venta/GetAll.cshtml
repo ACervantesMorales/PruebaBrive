@@ -38,7 +38,7 @@
                         @foreach (Capa_de_Modelo.Producto producto in Model.Producto.Productos)
                         {
                             <div class="col-lg-4 col-md-4 all des" style="height:420px;">
-                                <div class="product-item">
+                                <div class="product-item" style="text-align:center;">
                                     @if (producto.Imagen != null)
                                     {
                                         <td><img src="data:image/jpeg;base64,@Convert.ToBase64String(producto.Imagen)" style=" height:150px; width: 150px;" /></td>
@@ -51,12 +51,12 @@
                                         <a href="#"><h4>@producto.Nombre</h4></a>
                                         <h6>$@producto.Precio</h6>
                                         <p>@producto.Descripcion</p>
-                                        <ul class="stars">
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
+                                        <ul class="stars" style="padding-bottom:10px;">
+                                            <li style="width:40px;"><i class="fa fa-star"></i></li>
+                                            <li style="width:40px;"><i class="fa fa-star"></i></li>
+                                            <li style="width:40px;"><i class="fa fa-star"></i></li>
+                                            <li style="width:40px;"><i class="fa fa-star"></i></li>
+                                            <li style="width:40px;"><i class="fa fa-star"></i></li>
                                         </ul>
                                         <a href="@Url.Action("Carrito", "Venta", new { IdProducto = producto.IdProducto })" class="btn btn-primary" style=" font-weight:bold;">Agregar al carrito</a>
                                     </div>
