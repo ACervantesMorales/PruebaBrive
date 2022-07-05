@@ -56,6 +56,9 @@
                             @Html.TextBoxFor(model => model.Password, new { @class = "input100", @placeholder = "Password", @type="password"})
                             <span class="focus-input100" data-placeholder="&#xf191;"></span>
                         </div>
+                        <div class="d-flex justify-content-center" style="text-align: center;">
+                            @Html.ActionLink("No tienes una cuenta? Registrate aqui", "Form", "Usuario", htmlAttributes: new { @class = "btn btn-primary", @style= "text-align:center; margin-bottom: 20px; " })
+                        </div>
 
                         <div class="container-login100-form-btn">
                             <input type="submit" value="Login" class="login100-form-btn" />

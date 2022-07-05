@@ -38,7 +38,7 @@
                         @foreach (Capa_de_Modelo.Producto producto in Model.Producto.Productos)
                         {
                             <div class="col-lg-4 col-md-4 all des" style="height:420px;">
-                                <div class="product-item" style="text-align:center;">
+                                <div class="product-item" style="text-align:center; box-shadow: 3px 2px 5px black;">
                                     @if (producto.Imagen != null)
                                     {
                                         <td><img src="data:image/jpeg;base64,@Convert.ToBase64String(producto.Imagen)" style=" height:150px; width: 150px;" /></td>

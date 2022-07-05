@@ -371,11 +371,13 @@
     <Content Include="Scripts\vendorLogin\bootstrap\css\bootstrap-reboot.min.css.map" />
     <Content Include="Scripts\vendorLogin\bootstrap\css\bootstrap.css.map" />
     <Content Include="Scripts\vendorLogin\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Views\Login\Form.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

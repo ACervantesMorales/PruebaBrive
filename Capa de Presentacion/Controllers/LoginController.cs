@@ -56,5 +56,35 @@ namespace Capa_de_Presentacion.Controllers
             Session["Usuario"] = null;
             return RedirectToAction("Login");
         }
+
+        public ActionResult Form()
+        {
+            Capa_de_Modelo.Usuario usuario = new Capa_de_Modelo.Usuario();
+            Capa_de_Modelo.Auxiliar auxiliar = Capa_de_Negocio.Rol.GetAll();
+            usuario.Rol = new Capa_de_Modelo.Rol();
+
+            if (auxiliar.Correct)
+            {
+                usuario.Rol.Roles = auxiliar.Objects;
+            }
+
+            return View(usuario);
+        }
+
+        [HttpPost]
+        public ActionResult Form(Capa_de_Modelo.Usuario usuario)
+        {
+            Capa_de_Modelo.Auxiliar auxiliar = Capa_de_Negocio.Usuario.Add(usuario);
+
+            if (auxiliar.Correct)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                return PartialView("Modal");
+            }
+
+        }
     }
 }

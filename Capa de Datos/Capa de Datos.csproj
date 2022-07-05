@@ -95,6 +95,9 @@
     <Compile Include="Rol.cs">
       <DependentUpon>PruebaBriveModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="RolGetAll_Result.cs">
+      <DependentUpon>PruebaBriveModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Sucursal.cs">
       <DependentUpon>PruebaBriveModel.tt</DependentUpon>
     </Compile>

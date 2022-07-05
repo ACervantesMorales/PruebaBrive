@@ -29,10 +29,10 @@
 
 <div class="container">
 
-    <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins" style="display: flex; justify-content: center; align-items: center;">
+    <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins" style="display: flex; justify-content: center; align-items: center; margin:22px auto;">
         <div class="wrapper wrapper--w780">
-            <div class="card card-3">
-                <div class="card-heading">PRODUCTO
+            <div class="card card-3" style="box-shadow: 4px 4px 10px black;">
+                <div class="card-heading" style="background-color: #585858">PRODUCTO
                 </div>
                 <div class="card-body">
                     <h2 class="title">Ingresa los datos:</h2>
@@ -79,8 +79,8 @@
                             </div>
 
                             <div class="p-t-10">
-                                <input type="submit" value="Guardar" class="btn btn-success" />
-                                @Html.ActionLink("Regresar", "GetAll", "Producto", htmlAttributes: new { @class = "btn btn-danger", @style = "display:inline-block;" })
+                                <input type="submit" value="Guardar" class="btn btn-success" style="font-size:13px; width: 48%; padding: 0 25px;"/>
+                                @Html.ActionLink("Regresar", "GetAll", "Producto", htmlAttributes: new { @class = "btn btn-danger", @style = "display:inline-block; font-size:13px; width:48%; padding: 0 25px;" })
                             </div>
                     }
                 </div>

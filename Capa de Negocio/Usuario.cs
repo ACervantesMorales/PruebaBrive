@@ -8,6 +8,35 @@ namespace Capa_de_Negocio
 {
     public class Usuario
     {
+
+        public static Capa_de_Modelo.Auxiliar Add(Capa_de_Modelo.Usuario usuario)
+        {
+            Capa_de_Modelo.Auxiliar auxiliar = new Capa_de_Modelo.Auxiliar();
+            try
+            {
+                using (Capa_de_Datos.PruebaBriveEntities1 context = new Capa_de_Datos.PruebaBriveEntities1())
+                {
+                    var query = context.UsuarioAdd(usuario.Nombre, usuario.ApellidoPaterno, usuario.ApellidoMaterno, usuario.UserName, usuario.Email, usuario.Password, usuario.Rol.IdRol);
+
+                    if(query > 0)
+                    {
+                        auxiliar.Correct = true;
+                    }
+                    else
+                    {
+                        auxiliar.Correct = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                auxiliar.Correct = false;
+                auxiliar.ErrorMessage = ex.Message;
+                auxiliar.Ex = ex;
+            }
+            return auxiliar;
+        }
+
         public static Capa_de_Modelo.Auxiliar GetByUserName(string UserName)
         {
             Capa_de_Modelo.Auxiliar auxiliar = new Capa_de_Modelo.Auxiliar();
