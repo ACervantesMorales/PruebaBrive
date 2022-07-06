@@ -162,6 +162,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\cssLogin\main.css" />
     <Content Include="Content\cssLogin\util.css" />
+    <Content Include="Content\demoSuccess.css" />
     <Content Include="Content\EstiloCarrito.css" />
     <Content Include="Content\EstiloNav.css" />
     <Content Include="Content\EstiloSuccess.css" />
@@ -171,6 +172,7 @@
     <Content Include="Content\productos.jpg" />
     <Content Include="Content\sabritas.jpg" />
     <Content Include="Content\sinimagen.jpg" />
+    <Content Include="Content\styleSuccess.css" />
     <Content Include="Content\templatemo-sixteen.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\flexslider-icon.svg" />

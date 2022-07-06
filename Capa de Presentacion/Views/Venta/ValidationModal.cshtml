@@ -1,34 +1,174 @@
-﻿<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="http://bootboxjs.com/bootbox.js"></script>
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+﻿@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="http://bootboxjs.com/bootbox.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-<div class="modal" tabindex="-1" role="dialog" id="modalValidacion">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Aviso</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            @{
-                Capa_de_Modelo.Usuario usuario = new Capa_de_Modelo.Usuario();
-                usuario = (Capa_de_Modelo.Usuario)(Session["Usuario"]);
-            }
-            <div class="modal-body">
-                <h5>Se ha realizado una compra con exito a nombre de @usuario.Nombre @usuario.ApellidoPaterno @usuario.ApellidoMaterno</h5>
-            </div>
+    <div class="modal" tabindex="-1" role="dialog" id="modalValidacion">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Aviso</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @{
+                    Capa_de_Modelo.Usuario usuario = new Capa_de_Modelo.Usuario();
+                    usuario = (Capa_de_Modelo.Usuario)(Session["Usuario"]);
+                }
+                <div class="modal-body">
+                    <h5>Se ha realizado una compra con exito a nombre de @usuario.Nombre @usuario.ApellidoPaterno @usuario.ApellidoMaterno</h5>
+                </div>
 
 
-            <div class="modal-footer">
-                @Html.ActionLink("OK", "GetAll", "Venta", htmlAttributes: new { @class = "btn btn-primary" })
+                <div class="modal-footer">
+                    @Html.ActionLink("OK", "GetAll", "Venta", htmlAttributes: new { @class = "btn btn-primary" })
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<script>
-    $('#modalValidacion').modal();
-</script>
+    <script>
+        $('#modalValidacion').modal();
+    </script>*@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="x-apple-disable-message-reformatting">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"><!--<![endif]-->
+    <link rel="stylesheet" href="~/Content/styleSuccess.css"></link>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="http://bootboxjs.com/bootbox.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,700&display=swap" rel="stylesheet" type="text/css"><!--<![endif]-->
+
+</head>
+
+<body class="clean-body u_body" style="margin: 0;padding: 0;-webkit-text-size-adjust: 100%;background-color: #eeeeee;color: #000000">
+    <table style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 auto;background-color: #eeeeee;width:100%" cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr style="vertical-align: top">
+                <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
+                    
+                    <div class="u-row-container" style="padding: 0px; background-color: #ebffda; padding-bottom: 50px; ">
+                        <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;">
+                            <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
+                               <div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;">
+                                    <div style="background-color: #ebffda; width: 100% !important; ">
+                                        <div style="padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;">
+                                            <table id="u_content_image_1" style="font-family:'Rubik',sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:50px 10px 10px;font-family:'Rubik',sans-serif;" align="left">
+
+                                                            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                                                <tr>
+                                                                    <td class="v-text-align" style="padding-right: 0px;padding-left: 0px;" align="center">
+
+                                                                        <img align="center" border="0" src="~/Content/success.png" alt="email icon" title="email icon" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 50%;max-width: 290px;" width="290" class="v-src-width v-src-max-width" />
+
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <table id="u_content_heading_1" style="font-family:'Rubik',sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:20px 10px 0px;font-family:'Rubik',sans-serif;" align="left">
+
+                                                            <h1 class="v-text-align v-font-size" style="margin: 0px; color: #000000; line-height: 140%; text-align: center; word-wrap: break-word; font-weight: normal; font-family: 'Montserrat',sans-serif; font-size: 28px;">
+                                                                <strong>COMPRA EXITOSA </strong>
+                                                            </h1>
+
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="u-row-container" style="padding: 0px; background-color: transparent; width: 70%; margin: 30px auto; box-shadow: 4px 4px 10px black;">
+                        <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;">
+                            <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
+                                <div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;">
+                                    <div style="background-color: #eeeeee;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;">
+                                        <div style="padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;">
+
+
+                                            <table id="u_content_heading_2" style="font-family:'Rubik',sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:35px 30px 0px;font-family:'Rubik',sans-serif;" align="left">
+                                                            @{
+                                                                Capa_de_Modelo.Usuario usuario = new Capa_de_Modelo.Usuario();
+                                                                usuario = (Capa_de_Modelo.Usuario)(Session["Usuario"]);
+                                                            }
+                                                            <h1 class="v-text-align v-font-size" style="margin: 0px; line-height: 140%; text-align: left; word-wrap: break-word; font-weight: normal; font-family: 'Rubik',sans-serif; font-size: 25px; text-align:center;">
+                                                                <strong>Hola @usuario.Nombre @usuario.ApellidoPaterno @usuario.ApellidoMaterno !</strong>
+                                                            </h1>
+
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <br>
+                                            <table id="u_content_text_2" style="font-family:'Rubik',sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:0px 30px 20px;font-family:'Rubik',sans-serif;" align="left">
+
+                                                            <div class="v-text-align" style="line-height: 170%; text-align: left; word-wrap: break-word;">
+                                                                <p style="font-size: 18px; line-height: 170%; text-align:center;">Tu compra ha sido realizada correctamente. Vuelve Pronto! </p>
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <table id="u_content_text_2" style="font-family:'Rubik',sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:0px 30px 20px;font-family:'Rubik',sans-serif;" align="left">
+
+                                                            <div class="v-text-align" style="line-height: 170%; text-align: center; word-wrap: break-word;">
+                                                                <a class="btn btn-primary" href="@Url.Action("GetAll","Venta")">Continuar</a>
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+</body>
+
+
+
+</html>
