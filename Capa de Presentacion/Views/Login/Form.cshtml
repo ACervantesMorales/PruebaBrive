@@ -36,7 +36,7 @@
     <div class="limiter">
         <div class="container-login100" style="background-image: url(../../Content/fondoProductos.jpg);">
             <div class="wrap-login100">
-                @using (Html.BeginForm("Form", "Usuario", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                @using (Html.BeginForm("Form", "Login", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                 <form class="login100-form validate-form">
 
@@ -65,7 +65,7 @@
                         <span class="focus-input100" ></span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Ingresa Password">
-                        @Html.TextBoxFor(model => model.Password, new { @class = "input100", @placeholder = "Password"})
+                        @Html.TextBoxFor(model => model.Password, new { @class = "input100", @placeholder = "Password" , @type="password"})
                         <span class="focus-input100" ></span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Ingresa rol">

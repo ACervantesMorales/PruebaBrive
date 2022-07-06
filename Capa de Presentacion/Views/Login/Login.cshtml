@@ -36,6 +36,7 @@
     <div class="limiter">
         <div class="container-login100" style="background-image: url(../../Content/fondoProductos.jpg);">
             <div class="wrap-login100">
+
                 @using (Html.BeginForm("IniciarSesion", "Login", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     <form class="login100-form validate-form">
@@ -56,6 +57,7 @@
                             @Html.TextBoxFor(model => model.Password, new { @class = "input100", @placeholder = "Password", @type="password"})
                             <span class="focus-input100" data-placeholder="&#xf191;"></span>
                         </div>
+                        
                         <div class="d-flex justify-content-center" style="text-align: center;">
                             @Html.ActionLink("No tienes una cuenta? Registrate aqui", "Form", "Usuario", htmlAttributes: new { @class = "btn btn-primary", @style= "text-align:center; margin-bottom: 20px; " })
                         </div>
